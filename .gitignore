@@ -1,6 +1,7 @@
 # Project source #
 ###################
 .project
+.classpath
 .settings/*
 target/*
 target
