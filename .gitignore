@@ -1,4 +1,5 @@
-/.setting/*
+.project
+/.settings/*
 /target/*
 /webdesktop-core/target/*
 /webdesktop-standalone/target/*
