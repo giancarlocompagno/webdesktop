@@ -1,0 +1,5 @@
+/.setting/
+/target/*
+/webdesktop-core/target/*
+/webdesktop-standalone/target/*
+/webdesktop-servlet/target/*
