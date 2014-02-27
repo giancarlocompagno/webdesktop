@@ -3,9 +3,13 @@
 .project
 .settings/*
 target/*
+target
 webdesktop-core/target/*
+webdesktop-core/target
 webdesktop-standalone/target/*
+webdesktop-standalone/target
 webdesktop-servlet/target/*
+webdesktop-servlet/target
 
 # Compiled source #
 ###################
