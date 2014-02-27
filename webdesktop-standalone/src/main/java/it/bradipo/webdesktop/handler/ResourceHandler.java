@@ -17,11 +17,8 @@ public class ResourceHandler extends AbstractHttpHandler {
 	@Override
 	public void handle(HttpExchange exchange) throws IOException {
 		URI requestURI = exchange.getRequestURI();
-		if("/".equals(requestURI.getPath())){
-			sendMainPage(exchange);
-		}else{
-			send(exchange,loadResource(requestURI.getPath()));
-		}
+		String file = requestURI.getPath().substring("/resources".length());
+		send(exchange,loadResource(file));
 	}
 
 	

@@ -1,5 +1,6 @@
-package it.bradipo.webdesktop.handler;
+package it.bradipo.webdesktop.handler.home;
 
+import it.bradipo.webdesktop.handler.AbstractHttpHandler;
 import it.bradipo.webdesktop.handler.util.CaratteriSpeciali;
 
 import java.awt.Robot;

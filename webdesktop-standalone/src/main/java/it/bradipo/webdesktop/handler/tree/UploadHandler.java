@@ -1,11 +1,11 @@
-package it.bradipo.webdesktop.handler;
+package it.bradipo.webdesktop.handler.tree;
 
+import it.bradipo.webdesktop.handler.AbstractHttpHandler;
 import it.bradipo.webdesktop.multipart.Multipart;
 import it.bradipo.webdesktop.multipart.Part;
 import it.bradipo.webdesktop.multipart.ValueParser;
 
 import java.awt.Robot;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,9 +16,9 @@ import java.util.Map;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.Headers;
 
-public class Upload2Handler extends AbstractHttpHandler{
+public class UploadHandler extends AbstractHttpHandler{
 
-	public Upload2Handler(String hostName, Robot robot, boolean readOnly) {
+	public UploadHandler(String hostName, Robot robot, boolean readOnly) {
 		super(hostName, robot, readOnly);
 		// TODO Auto-generated constructor stub
 	}

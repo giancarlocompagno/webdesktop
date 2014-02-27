@@ -98,11 +98,6 @@ public abstract class AbstractHttpHandler implements HttpHandler{
 	    		  (readOnly?"":"<script src=\"/resources/custom2.js\"></script>\n")+
 	    		  "</head>\n"+
 	    		  "<body>\n"+
-	    		  (readOnly?"":"<form action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">"
-	    		  			 + "<input type=\"file\" name=\"file\"/><input type=\"submit\" name=\"invia\"/></form>")+
-	    		  (readOnly?"":"<div id=\"jstree\">"+
-	    				  			
-	    				  	"</div>")+
 	    		  "<img id=\"screen\" src=\"/screen\" />"+
 	    		  "</body>\n"+
 	    		  "</html>\n";
@@ -135,7 +130,6 @@ public abstract class AbstractHttpHandler implements HttpHandler{
 	
 	
 	protected byte[] loadResource(String resource) throws IOException {
-		this.getClass().getResource("/");
 		InputStream is = this.getClass().getResourceAsStream(resource);
 		return loadResources(is);
 	}

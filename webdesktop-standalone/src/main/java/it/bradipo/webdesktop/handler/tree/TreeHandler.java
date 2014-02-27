@@ -1,4 +1,6 @@
-package it.bradipo.webdesktop.handler;
+package it.bradipo.webdesktop.handler.tree;
+
+import it.bradipo.webdesktop.handler.AbstractHttpHandler;
 
 import java.awt.Robot;
 import java.io.File;

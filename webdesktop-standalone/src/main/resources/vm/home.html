@@ -1,0 +1,41 @@
+<!DOCTYPE div PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>WebDesktop: ${hostName}</title>
+		<link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css" />
+	    <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap-theme.min.css" />
+	    <link rel="stylesheet" href="/resources/css/tree/style.min.css" />
+	    <link rel="stylesheet" href="/resources/css/lightness/jquery.ui.custom.min.css" />
+	    <script>
+	    	var keydownup ={};
+	    
+	    	${extenalScript}
+	    </script>
+	    <script src="/resources/js/libs/jquery.min.js"></script>
+	    <script src="/resources/js/libs/jquery.ui.min.js"></script>
+	    <script src="/resources/js/libs/bootstrap.min.js"></script>
+	    <script src="/resources/js/custom1.js"></script>
+    #if( ! ${readOnly} )
+    	<script src="/resources/js/custom2.js"></script>
+    #end
+	</head>
+	<body>
+		<div class="row page" id="page">
+			<div class="col-md-12">
+				<div class="row">
+					#if( ! ${readOnly} )
+					<div class="col-md-3 col-sm-8 col-xs-8">
+						<button id="openfolder" type="button" class="btn btn-success btn-sm" onclick="opengestionefolder();"><i class="glyphicon glyphicon-asterisk"></i>Gestione Upload/Download</button>
+						<div id="dialog">
+    						<iframe id="myIframe" src="" width="800px" height="600px"></iframe>
+						</div>
+					</div>
+					#end
+				</div>
+				<div class="row">
+					<img id="screen" src="/screen" />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

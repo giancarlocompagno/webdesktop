@@ -1,4 +1,6 @@
-package it.bradipo.webdesktop.handler;
+package it.bradipo.webdesktop.handler.home;
+
+import it.bradipo.webdesktop.handler.AbstractHttpHandler;
 
 import java.awt.Rectangle;
 import java.awt.Robot;

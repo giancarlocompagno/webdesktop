@@ -1,7 +1,8 @@
-package it.bradipo.webdesktop.handler;
+package it.bradipo.webdesktop.handler.home;
 
-import it.bradipo.webdesktop.handler.ClickHandler.CLICKTYPE;
-import it.bradipo.webdesktop.handler.KeyPressHandler.KEYTYPE;
+import it.bradipo.webdesktop.handler.AbstractHttpHandler;
+import it.bradipo.webdesktop.handler.home.ClickHandler.CLICKTYPE;
+import it.bradipo.webdesktop.handler.home.KeyPressHandler.KEYTYPE;
 
 import java.awt.Robot;
 import java.awt.event.InputEvent;
