@@ -53,13 +53,13 @@ public class TreeHandler extends AbstractHttpHandler {
 				String datajstree = null;
 				if(isRoot && f.isDirectory()){
 					s.append("class=\"jstree-closed\" ");
-					datajstree = "\"icon\":\"/resources/tree/themes/hd.png\"";
+					datajstree = "\"icon\":\"/resources/css/tree/hd.png\"";
 				}else if(isRoot){
-					datajstree = "\"icon\":\"/resources/tree/themes/hd.png\",\"disabled\":true ";
+					datajstree = "\"icon\":\"/resources/css/tree/hd.png\",\"disabled\":true ";
 				}else if(f.isDirectory()){
 					s.append("class=\"jstree-closed\" ");
 				}else{
-					datajstree = "\"icon\":\"/resources/tree/themes/file.png\"";
+					datajstree = "\"icon\":\"/resources/css/tree/file.png\"";
 				}
 				if(datajstree!=null){
 					s.append(" data-jstree='{"+datajstree+"}' ");	

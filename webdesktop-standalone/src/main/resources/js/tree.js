@@ -21,7 +21,7 @@ $(document).ready(function() {
 		     },
 		     "types" : {
 		    	    "#" : {"max_children" : 1,"max_depth" : 4,"valid_children" : ["root"]},
-		    	    "root" : {"icon" : "/resources/tree/themes/hd.png","valid_children" : ["default"]},
+		    	    "root" : {"icon" : "/resources/css/tree/hd.png","valid_children" : ["default"]},
 		    	    "default" : {"valid_children" : ["default","file"]},
 		    	    "file" : {"icon" : "glyphicon glyphicon-file","valid_children" : []}
 		    	  }

@@ -1,4 +1,4 @@
-package it.bradipo.webdesktop.shell;
+package it.bradipo.webdesktop.handler.shell;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;

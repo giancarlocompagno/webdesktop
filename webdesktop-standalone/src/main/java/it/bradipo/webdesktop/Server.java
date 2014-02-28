@@ -4,6 +4,8 @@ import it.bradipo.webdesktop.handler.ResourceHandler;
 import it.bradipo.webdesktop.handler.home.CommandHandler;
 import it.bradipo.webdesktop.handler.home.HomePageHandler;
 import it.bradipo.webdesktop.handler.home.StreamMJPEGHandler;
+import it.bradipo.webdesktop.handler.shell.ShellEditHandler;
+import it.bradipo.webdesktop.handler.shell.ShellPageHandler;
 import it.bradipo.webdesktop.handler.tree.TreeHandler;
 import it.bradipo.webdesktop.handler.tree.TreePageHandler;
 import it.bradipo.webdesktop.handler.tree.UploadHandler;
@@ -35,10 +37,12 @@ public class Server {
 	
 	private void init(){
 		this.server.createContext("/", new HomePageHandler(hostName,robot,readOnly));
-		this.server.createContext("/tree.html", new TreePageHandler(hostName,robot,readOnly));
 		this.server.createContext("/resources", new ResourceHandler(hostName,robot,readOnly));
 		this.server.createContext("/screen", new StreamMJPEGHandler(hostName,robot,readOnly));
 		if(!readOnly){
+			this.server.createContext("/tree.html", new TreePageHandler(hostName,robot,readOnly));
+			this.server.createContext("/shell.html", new ShellPageHandler(hostName,robot,readOnly));
+			this.server.createContext("/shelledit", new ShellEditHandler(hostName,robot,readOnly));
 			this.server.createContext("/command", new CommandHandler(hostName,robot,readOnly));
 			this.server.createContext("/tree", new TreeHandler(hostName,robot,readOnly));
 			this.server.createContext("/upload", new UploadHandler(hostName, robot, readOnly));
