@@ -45,15 +45,20 @@ public abstract class AbstractHttpHandler implements HttpHandler{
 		return readOnly;
 	}
 	
-	protected void send(HttpExchange exchange, String content,String... contentType) throws IOException {
+	protected void send(HttpExchange exchange,String content,String... contentType) throws IOException {
+		send(exchange, 200, content, contentType);
+	}
+	
+	protected void send(HttpExchange exchange,int responseCode, String content,String... contentType) throws IOException {
 		if(contentType.length==0){
-			send(exchange, content.getBytes(),"html");
+			send(exchange,responseCode, content.getBytes(),"html");
 		}else{
-			send(exchange, content.getBytes(),contentType);
+			send(exchange,responseCode, content.getBytes(),contentType);
 		}
 	}
 	
-	protected void send(HttpExchange exchange, byte content[],String... contentType) throws IOException {
+	
+	protected void send(HttpExchange exchange,int responseCode, byte content[],String... contentType) throws IOException {
 		List<String> arrayList = new ArrayList<String>();
 		for(int i=0;i<contentType.length;i++){
 			arrayList.add(contentType[i]);
@@ -61,48 +66,16 @@ public abstract class AbstractHttpHandler implements HttpHandler{
 		if(arrayList.size()>0){
 			exchange.getResponseHeaders().put("Content-Type", arrayList);
 		}
-		exchange.sendResponseHeaders(200, content.length);
+		exchange.sendResponseHeaders(responseCode, content.length);
 		exchange.getResponseBody().write(content);
 		exchange.close();
 	}
 	
-	
-	
-	protected void sendMainPage(HttpExchange exchange) throws IOException {
-		  String s = getTemplate(getHostName(),isReadOnly());
-	      send(exchange,s);
-	   }
-
-	private static String getTemplate(String hostName,boolean readOnly) {
-		
-		String ss = "var keydownup ={};\n";
-		for(Integer x : CaratteriSpeciali.keydownupJavaKeyCodes()){
-			ss = ss + "keydownup["+x+"] = false;\n"; 
-		}
-		
-		String s =
-	    		  "<html>\n"+
-	    		  "<head>\n"+
-	    		  "<title>" + hostName + " Desktop "+(readOnly?"(Read Only)":"")+"</title>"+
-	    		  (readOnly?"":"<link rel=\"stylesheet\" href=\"/resources/bootstrap/css/bootstrap.min.css\" />")+
-	    		  (readOnly?"":"<link rel=\"stylesheet\" href=\"/resources/bootstrap/css/bootstrap-theme.min.css\" />")+
-	    		  (readOnly?"":"<link rel=\"stylesheet\" href=\"/resources/tree/themes/style.min.css\" />")+
-	    		  "<script>\n"+
-	    		  ss+
-	    		  "</script>\n"+
-	    		  "<script src=\"/resources/jquery.min.js\"></script>\n"+
-	    		  (readOnly?"":"<script src=\"/resources/tree/libs/jquery.ui.touch.js\"></script>\n")+
-	    		  (readOnly?"":"<script src=\"/resources/tree/libs/required.js\"></script>\n")+
-	    		  (readOnly?"":"<script src=\"/resources/tree/libs/jstree.min.js\"></script>\n")+
-	    		  "<script src=\"/resources/custom1.js\"></script>\n"+
-	    		  (readOnly?"":"<script src=\"/resources/custom2.js\"></script>\n")+
-	    		  "</head>\n"+
-	    		  "<body>\n"+
-	    		  "<img id=\"screen\" src=\"/screen\" />"+
-	    		  "</body>\n"+
-	    		  "</html>\n";
-		return s;
+	protected void send(HttpExchange exchange, byte content[],String... contentType) throws IOException {
+		send(exchange, 200, content, contentType);
 	}
+	
+	
 	
 	protected static String getSubpath(String path) {
 		int q = path.indexOf('?');

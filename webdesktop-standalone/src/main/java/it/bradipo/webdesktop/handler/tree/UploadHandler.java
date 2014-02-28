@@ -16,7 +16,7 @@ import java.util.Map;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.Headers;
 
-public class UploadHandler extends AbstractHttpHandler{
+public class UploadHandler extends TreePageHandler{
 
 	public UploadHandler(String hostName, Robot robot, boolean readOnly) {
 		super(hostName, robot, readOnly);
@@ -65,15 +65,13 @@ public class UploadHandler extends AbstractHttpHandler{
 			
 			
 			writeResources(in, new FileOutputStream(new File(new File(directory),fileName)));
-
-			send(exchange,loadResource("/resources/tree.html"));
-			
+		
 		}finally {
 			in.close();
 		}
 
 		
-
+		super.handle(exchange);
 
 
 	}

@@ -106,8 +106,8 @@ $(document).ready(function() {
 	$("#dialog").dialog({
 	    autoOpen: false,
 	    modal: true,
-	    width: 800,
-	    height: 600,
+	    width: 900,
+	    height: 650,
 	    open: function(ev, ui){
 	             $('#myIframe').attr('src','/tree.html');
 	          }
