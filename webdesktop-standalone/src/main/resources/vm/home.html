@@ -10,6 +10,22 @@
 	    	var keydownup ={};
 	    
 	    	${extenalScript}
+	    	
+	    	
+	    	function play(){
+	    		playMJPEG();
+	    	#if( ! ${readOnly} )
+	    		playCommand();
+	    	#end
+	    	}
+	    	
+	    	function stop(){
+	    		stopMJPEG();
+	    	#if( ! ${readOnly} )
+	    		stopCommand();
+	    	#end
+	    	}
+	    	
 	    </script>
 	    <script src="/resources/js/libs/jquery.min.js"></script>
 	    <script src="/resources/js/libs/jquery.ui.min.js"></script>
@@ -31,6 +47,8 @@
 						</div>
 					</div>
 					#end
+					<button id="play" type="button" class="btn btn-success btn-sm" onclick="play();"><i class="glyphicon glyphicon-play-circle"></i>Play</button>
+					<button id="stop" type="button" class="btn btn-danger btn-sm" onclick="stop();"><i class="glyphicon glyphicon-stop"></i>Stop</button>
 				</div>
 				<div class="row">
 					<img id="screen" src="/screen" />

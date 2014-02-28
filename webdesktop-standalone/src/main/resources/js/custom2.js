@@ -1,3 +1,47 @@
+function opengestionefolder(){
+	$('#dialog').dialog('open');
+}
+
+
+var commands = '';
+
+function addCommand(curr){
+	if(idCommand!=null){
+		commands +="_"+curr;	
+	}
+}
+
+function getCommands(){
+	var tmp = commands;
+	commands = '';
+	return tmp;
+}
+
+
+var idCommand = null;
+
+function playCommand(){
+	if(idCommand == null){
+		idCommand = setInterval(function() {
+			var commandToSend = getCommands();
+			if(commandToSend!=''){
+				$.ajax({
+					url : './command?'+commandToSend,
+				});
+			}
+			
+		},TIMEOUT/2);
+	}
+}
+
+function stopCommand(){
+	if(idCommand!=null){
+		clearInterval(idCommand);
+		idCommand = null;
+	}
+}
+
+
 function FindPosition(oElement)
 {
   if(typeof( oElement.offsetParent ) != "undefined")
@@ -43,59 +87,46 @@ function GetCoordinates(e)
 }
 
 
-var command = '';
-
 
 $(document).ready(function() {
 	
-	
-
-	setInterval(function() {
-		var commandToSend = command;
-		command = '';
-		if(commandToSend!=''){
-			$.ajax({
-				url : './command?'+commandToSend,
-			});
-		}
-		
-	},TIMEOUT/2);
+	playCommand();
 
 	$("#screen").keydown(function (e){
 		if(keydownup[e.keyCode]==null){
-			command += "_KP"+e.keyCode; 
+			addCommand("KP"+e.keyCode); 
 		}
 	});
 	
 	$("#screen").keydown(function (e){
 		if(keydownup[e.keyCode]!=null && keydownup[e.keyCode]==false){
 			keydownup[e.keyCode]=true;
-			command += "_KD"+e.keyCode;
+			addCommand("KD"+e.keyCode);
 		}
 		
 	});
 	
 	$("#screen").keyup(function (e){
 		if(keydownup[e.keyCode]!=null){
-			command += "_KU"+e.keyCode;
+			addCommand("KU"+e.keyCode);
 			keydownup[e.keyCode]=false;
 		}
 	});
 	
 	$("#screen").mouseup(function(e){
 		var c  = GetCoordinates(e);
-		command += "_MU"+c;
+		addCommand("MU"+c);
 		
 	});
 	
 	$("#screen").mousedown(function(e){
 		var c  = GetCoordinates(e);
-		command += "_MD"+c;
+		addCommand("MD"+c);
 	});
 	
 	$("#screen").bind("contextmenu",function(e){
 		var c  = GetCoordinates(e);
-		command += "_RC"+c;
+		addCommand("RC"+c);
 		return false;
 	});
 	
@@ -118,6 +149,3 @@ $(document).ready(function() {
 });
 
 
-function opengestionefolder(){
-	$('#dialog').dialog('open');
-}
