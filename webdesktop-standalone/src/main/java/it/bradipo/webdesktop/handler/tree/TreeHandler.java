@@ -67,7 +67,6 @@ public class TreeHandler extends AbstractHttpHandler {
 				s.append(">"+(isRoot?f.toString():f.getName())+" "+dimension(f)+"</li>\n");
 			}
 			s.append("</ul>\n");
-			System.out.println(s);
 			send(exchange, s.toString(),"application/html");
 		}else if(file!=null){
 			FileInputStream in = new FileInputStream(file);

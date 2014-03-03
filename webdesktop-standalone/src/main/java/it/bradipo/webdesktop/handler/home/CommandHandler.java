@@ -37,7 +37,6 @@ public class CommandHandler extends AbstractHttpHandler {
 		try{
 			String path = exchange.getRequestURI().toASCIIString();
 			String subpath = getSubpath(path);
-			System.out.println(subpath);
 			String[] comandi =subpath.split("_");
 			for (int i = 0; i < comandi.length; i++) {
 				String comando = comandi[i];

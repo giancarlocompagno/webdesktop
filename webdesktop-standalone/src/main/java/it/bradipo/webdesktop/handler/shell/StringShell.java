@@ -1,11 +1,7 @@
 package it.bradipo.webdesktop.handler.shell;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.util.Scanner;
-
 
 public class StringShell implements Runnable{
 	
@@ -29,7 +25,7 @@ public class StringShell implements Runnable{
 		}
 	}
 	
-	public String readCommand(){
+	public byte[] readCommand(){
 		synchronized (commandSync) {
 			if(command==null){
 				try {
@@ -37,16 +33,19 @@ public class StringShell implements Runnable{
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				String tmp = command;
-				command = null;
-				return tmp;
+				return command();
 			}else{
-				String tmp = command;
-				command = null;
-				return tmp; 
+				return command();
 			}
 		}
 		
+	}
+
+
+	private byte[] command() {
+		String tmp = command;
+		command = null;
+		return (tmp+"\n").getBytes();
 	}
 	
 	
@@ -74,13 +73,18 @@ public class StringShell implements Runnable{
 	
 	public void run(){
 		try{
-			Scanner sc = new Scanner(System.in);
-			ProcessBuilder pb = new ProcessBuilder("cmd.exe");
-			Process p = pb.start();
+			final Process p = Runtime.getRuntime().exec("cmd.exe");;
+			
+			Runtime.getRuntime().addShutdownHook(new Thread(){
+				@Override
+				public void run() {
+					System.out.println("invocazione .....");
+				}
+			});
 			Thread t = new Thread(new Input(p.getInputStream()));
 			Thread t1 = new Thread(new Input(p.getErrorStream()));
 			Thread t2 = new Thread(new Output(p.getOutputStream()));
-
+			
 			t.start();
 			t1.start();
 			t2.start();
@@ -88,7 +92,7 @@ public class StringShell implements Runnable{
 			t.join();
 			t1.join();
 			t2.join();
-			sc.close();
+			p.destroy();
 		}catch(Exception e){
 
 		}
@@ -132,10 +136,9 @@ public class StringShell implements Runnable{
 		@Override
 		public void run() {
 			try {
-				String command = null;
+				byte[] command = null;
 				while((command = StringShell.this.readCommand())!=null){
-					command = command+"\n";
-					os.write(command.getBytes());
+					os.write(command);
 					os.flush();
 				}
 			} catch (IOException e) {

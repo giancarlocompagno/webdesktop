@@ -6,6 +6,7 @@ import it.bradipo.webdesktop.handler.home.HomePageHandler;
 import it.bradipo.webdesktop.handler.home.StreamMJPEGHandler;
 import it.bradipo.webdesktop.handler.shell.ShellEditHandler;
 import it.bradipo.webdesktop.handler.shell.ShellPageHandler;
+import it.bradipo.webdesktop.handler.task.TaskManagerPageHandler;
 import it.bradipo.webdesktop.handler.tree.TreeHandler;
 import it.bradipo.webdesktop.handler.tree.TreePageHandler;
 import it.bradipo.webdesktop.handler.tree.UploadHandler;
@@ -40,6 +41,7 @@ public class Server {
 		this.server.createContext("/resources", new ResourceHandler(hostName,robot,readOnly));
 		this.server.createContext("/screen", new StreamMJPEGHandler(hostName,robot,readOnly));
 		if(!readOnly){
+			this.server.createContext("/taskmanager.html", new TaskManagerPageHandler(hostName,robot,readOnly));
 			this.server.createContext("/tree.html", new TreePageHandler(hostName,robot,readOnly));
 			this.server.createContext("/shell.html", new ShellPageHandler(hostName,robot,readOnly));
 			this.server.createContext("/shelledit", new ShellEditHandler(hostName,robot,readOnly));
@@ -62,7 +64,6 @@ public class Server {
 		Server server = new Server(6060,true);
 		server.start();
 		System.out.println("in attesa");
-		
 	}
 	
 	
