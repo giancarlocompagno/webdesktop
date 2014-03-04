@@ -40,18 +40,24 @@
 			<div class="col-md-12">
 				<div class="row">
 					#if( ! ${readOnly} )
-					<div class="col-md-3 col-sm-8 col-xs-8">
+					<div class="col-md-4">
 						<button id="openfolder" type="button" class="btn btn-success btn-sm" onclick="opengestionefolder();"><i class="glyphicon glyphicon-asterisk"></i>Gestione Upload/Download</button>
-						<div id="dialog" style="overflow: hidden;">
-    						<iframe id="myIframe" src="" width="850px" height="600px"></iframe>
-						</div>
+						<button id="shellprompt" type="button" class="btn btn-success btn-sm" onclick="openshellprompt();"><i class="glyphicon glyphicon-asterisk"></i>Shell/Prompt</button>
+						<button id="taskmanager" type="button" class="btn btn-success btn-sm" onclick="opentaskmanager();"><i class="glyphicon glyphicon-asterisk"></i>Task Manager</button>
 					</div>
 					#end
-					<button id="play" type="button" class="btn btn-success btn-sm" onclick="play();"><i class="glyphicon glyphicon-play-circle"></i>Play</button>
-					<button id="stop" type="button" class="btn btn-danger btn-sm" onclick="stop();"><i class="glyphicon glyphicon-stop"></i>Stop</button>
+					<div class="col-md-2">
+						<button id="play" type="button" class="btn btn-success btn-sm" onclick="play();"><i class="glyphicon glyphicon-play-circle"></i>Play</button>
+						<button id="stop" type="button" class="btn btn-danger btn-sm" onclick="stop();"><i class="glyphicon glyphicon-stop"></i>Stop</button>
+					</div>
 				</div>
 				<div class="row">
 					<img id="screen" src="/screen" />
+				</div>
+				<div class="row">
+					<div id="dialog" style="overflow: hidden;">
+    					<iframe id="myIframe" src="" width="850px" height="600px"></iframe>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -36,7 +36,9 @@ public abstract class TaskManager {
 		if(task!=null){
 			try {
 				Process p = Runtime.getRuntime().exec(killTaskCommand(task));
-			} catch (IOException e) {
+				p.waitFor();
+				p.destroy();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -73,8 +75,9 @@ public abstract class TaskManager {
 				}
 			}
 			input.close();
-		}
-		catch (Exception err) {
+			p.waitFor();
+			p.destroy();
+		}catch (Exception err) {
 			err.printStackTrace();
 		}
 	}

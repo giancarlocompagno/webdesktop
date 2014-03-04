@@ -20,7 +20,7 @@ public class ShellEditHandler extends AbstractHttpHandler{
 	@Override
 	public void handle(HttpExchange exchange) throws IOException {
 		
-		if(shell==null){
+		if(shell==null || !shell.isAttiva()){
 			shell = new StringShell();
 		}
 		

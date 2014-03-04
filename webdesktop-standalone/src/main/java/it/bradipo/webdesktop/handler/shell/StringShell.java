@@ -5,6 +5,13 @@ import java.io.OutputStream;
 
 public class StringShell implements Runnable{
 	
+	
+	private boolean attiva = true;
+	
+	public boolean isAttiva() {
+		return attiva;
+	}
+	
 	private StringBuffer sb = new StringBuffer();
 	
 	private String command;
@@ -78,7 +85,7 @@ public class StringShell implements Runnable{
 			Runtime.getRuntime().addShutdownHook(new Thread(){
 				@Override
 				public void run() {
-					System.out.println("invocazione .....");
+					p.destroy();
 				}
 			});
 			Thread t = new Thread(new Input(p.getInputStream()));
@@ -93,6 +100,7 @@ public class StringShell implements Runnable{
 			t1.join();
 			t2.join();
 			p.destroy();
+			attiva=false;
 		}catch(Exception e){
 
 		}
@@ -122,6 +130,7 @@ public class StringShell implements Runnable{
 				}catch(Exception e){
 					
 				}
+				attiva=false;
 			}
 		}
 	}
@@ -152,6 +161,7 @@ public class StringShell implements Runnable{
 				}catch(Exception e){
 					
 				}
+				attiva=false;
 			}
 			
 		}

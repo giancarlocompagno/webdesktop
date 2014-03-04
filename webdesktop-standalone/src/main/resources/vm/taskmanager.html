@@ -17,18 +17,22 @@
 	</head>
 	<body>
 		<div class="container-fluid">
+			<table>
+				<tbody>
 				#foreach( $task in $tasks)
-  				<div class="row">
+  				<tr>
 					#foreach( $value in $task.value())
-					<div class="col-md-1">
+					<td>
 						<a href="#" title="${value}">${value}</a>
-					</div>
+					</td>
 					#end
-					<div class="col-md-1">
+					<td>
 						<button id="deletefile" type="button" class="btn btn-danger btn-sm" onclick="killprocess('${task.getPID()}');"><i class="glyphicon glyphicon-remove"></i>Kill Process ${task.getPID()}</button>
-					</div>
-				</div>
+					</td>
+				</tr>
 				#end
+				</tbody>
+			</table>
 		</div>
 	</body>
 </html>

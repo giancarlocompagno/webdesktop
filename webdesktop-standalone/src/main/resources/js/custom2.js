@@ -1,7 +1,18 @@
+var url = null;
 function opengestionefolder(){
+	url = '/tree.html';
 	$('#dialog').dialog('open');
 }
 
+function openshellprompt(){
+	url = '/shell.html';
+	$('#dialog').dialog('open');
+}
+
+function opentaskmanager(){
+	url = '/taskmanager.html';
+	$('#dialog').dialog('open');
+}
 
 var commands = '';
 
@@ -140,8 +151,12 @@ $(document).ready(function() {
 	    width: 900,
 	    height: 650,
 	    open: function(ev, ui){
-	             $('#myIframe').attr('src','/tree.html');
-	          }
+	             $('#myIframe').attr('src',url);
+	          },
+	    close: function(ev, ui){
+	    	$('#myIframe').attr('src','');
+        }
+	
 	});
 	
 	
