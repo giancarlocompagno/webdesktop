@@ -16,8 +16,8 @@ import java.util.*;
 
 public abstract class TaskManager {
 	
-	private Map<String,ITask> tasks = new LinkedHashMap<String,ITask>();
-	
+	protected Map<String,ITask> tasks = new LinkedHashMap<String,ITask>();
+	protected List<String> keys = new ArrayList<String>();
 	
 	public TaskManager() {
 		reload();
@@ -29,7 +29,7 @@ public abstract class TaskManager {
 	//String taskListCommand = "tasklist /v /fo csv";
 	protected abstract String listTaskCommand();
 	
-	protected abstract ITask newTask(String[] keys,String line);
+	protected abstract ITask newTask(String line);
 
 	public void killTask(String pid) {
 		ITask task = tasks.get(pid);
@@ -61,16 +61,15 @@ public abstract class TaskManager {
 			Process p = Runtime.getRuntime().exec(listTaskCommand());
 			BufferedReader input = new BufferedReader
 					(new InputStreamReader(p.getInputStream()));
-			String[]  keys = null;
 			while((line = input.readLine()) != null){
 				if (!line.trim().equals("")) {
-					keys = getKeys(line);
+					defineKeys(line);
 					break;
 				}
 			}
 			while ((line = input.readLine()) != null) {
 				if (!line.trim().equals("")) {
-					ITask task = newTask(keys,line);
+					ITask task = newTask(line);
 					tasks.put(task.getPID(), task);
 				}
 			}
@@ -82,6 +81,10 @@ public abstract class TaskManager {
 		}
 	}
 
-	protected abstract String[] getKeys(String line);
+	protected abstract void defineKeys(String line);
+
+	public List<String> getKeys() {
+		return this.keys;
+	}
 	
 }

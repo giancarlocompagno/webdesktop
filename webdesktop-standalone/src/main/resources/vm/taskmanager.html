@@ -18,12 +18,22 @@
 	<body>
 		<div class="container-fluid">
 			<table>
+				<thead>
+					<tr>
+						#foreach( $key in $keys)
+						<th>
+							${key}
+						</th>
+						#end
+						<th>Comandi</th>
+					</tr>
+				</thead>
 				<tbody>
 				#foreach( $task in $tasks)
   				<tr>
 					#foreach( $value in $task.value())
 					<td>
-						<a href="#" title="${value}">${value}</a>
+						${value}
 					</td>
 					#end
 					<td>

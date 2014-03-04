@@ -18,15 +18,14 @@ public class UnixTaskManager extends TaskManager{
 	}
 
 	@Override
-	protected ITask newTask(String[] keys,String line) {
+	protected ITask newTask(String line) {
 		// TODO Auto-generated method stub
 		return new UnixTask();
 	}
 
 	@Override
-	protected String[] getKeys(String line) {
-		// TODO Auto-generated method stub
-		return null;
+	protected void defineKeys(String line) {
+		
 	}
 
 }

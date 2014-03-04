@@ -37,6 +37,7 @@ public class TaskManagerPageHandler extends VelocityHandler {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("hostName",getHostName());
 		map.put("tasks",taskManager.getTasks());
+		map.put("keys",taskManager.getKeys());
 		
 	    String content = template("taskmanager.html", map);
 	    send(exchange, content, "html");
