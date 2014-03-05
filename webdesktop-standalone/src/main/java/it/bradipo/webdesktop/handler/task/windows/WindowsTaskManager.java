@@ -4,10 +4,14 @@ import it.bradipo.webdesktop.handler.task.ITask;
 import it.bradipo.webdesktop.handler.task.TaskManager;
 
 public class WindowsTaskManager extends TaskManager {
+	
+	public WindowsTaskManager() {
+		
+	}
 
 	@Override
 	protected String killTaskCommand(ITask task) {
-		return "taskkill /F /PID "+task.getPID();
+		return "taskkill /F /V /PID "+task.getPID();
 	}
 
 	@Override

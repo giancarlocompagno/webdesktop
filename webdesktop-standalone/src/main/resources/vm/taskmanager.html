@@ -4,20 +4,32 @@
 		<title>WebDesktop ${hostName}: Task Manager</title>
 		<link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css" />
 	    <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap-theme.min.css" />
-	    <link rel="stylesheet" href="/resources/css/lightness/jquery.ui.custom.min.css" />
+	    <link rel="stylesheet" href="/resources/css/smoothness/jquery.ui.custom.min.css" />
+	    <link rel="stylesheet" href="/resources/css/datatable/jquery.dataTables_themeroller.css" />
+	    <link rel="stylesheet" href="/resources/css/datatable/jquery.dataTables.css" />
 	    <script src="/resources/js/libs/jquery.min.js"></script>
 	    <script src="/resources/js/libs/jquery.ui.min.js"></script>
 	    <script src="/resources/js/libs/bootstrap.min.js"></script>
-	    <script type="text/javascript">
-	    	function killprocess(pod){
-	    		window.location='taskmanager.html?killprocess='+pod;
-	    	}
+	    <script src="/resources/js/libs/jquery.dataTables.min.js"></script>
+	    <script src="/resources/js/datatables.js"></script>
 	    
-	    </script>
 	</head>
 	<body>
-		<div class="container-fluid">
-			<table>
+			<div class="row page" id="demo">
+				<table>
+						<tr>
+							#foreach( $key in $keys)
+							<td>
+								<button type="button" class="btn btn-success btn-sm" onclick="fnShowHide(this,${foreach.index});">
+									<i class="glyphicon glyphicon-pencil"></i>
+									${key}
+								</button>
+							</td>
+							#end
+						</tr>
+				</table>
+			</div>
+			<table id="taskmanager">
 				<thead>
 					<tr>
 						#foreach( $key in $keys)
@@ -43,6 +55,5 @@
 				#end
 				</tbody>
 			</table>
-		</div>
 	</body>
 </html>
