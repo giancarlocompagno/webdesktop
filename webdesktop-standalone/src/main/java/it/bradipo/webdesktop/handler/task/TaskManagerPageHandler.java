@@ -18,10 +18,23 @@ public class TaskManagerPageHandler extends VelocityHandler {
 		super(hostName, robot, readOnly);
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	public void handle(HttpExchange exchange) throws IOException {
-		
+		elaboraRichiesta(exchange);
+		super.handle(exchange);
+	}
+
+	@Override
+	protected Map<String, Object> getMap(HttpExchange exchange) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("hostName",getHostName());
+		map.put("tasks",taskManager.getTasks());
+		map.put("keys",taskManager.getKeys());
+		return map;
+	}
+
+	private void elaboraRichiesta(HttpExchange exchange) {
 		if(taskManager==null){
 			taskManager = new WindowsTaskManager();
 		}
@@ -33,15 +46,11 @@ public class TaskManagerPageHandler extends VelocityHandler {
 		}
 		
 		taskManager.reload();
-		
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("hostName",getHostName());
-		map.put("tasks",taskManager.getTasks());
-		map.put("keys",taskManager.getKeys());
-		
-	    String content = template("taskmanager.html", map);
-	    send(exchange, content, "html");
-
+	}
+	
+	@Override
+	protected String getTemplate(HttpExchange exchange) {
+		return "taskmanager.html";
 	}
 
 }

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.net.URL;
 import java.security.KeyStore.Entry;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.velocity.Template;
@@ -40,5 +41,18 @@ public abstract class VelocityHandler  extends AbstractHttpHandler{
         t.merge( context, writer );
         return writer.toString();     
 	}
+	
+	@Override
+	public void handle(HttpExchange exchange) throws IOException {
+		Map<String,Object> map = getMap(exchange);
+		String content = template(getTemplate(exchange), map);
+	    sendHTML(exchange, content);
+	}
+
+	protected abstract String getTemplate(HttpExchange exchange) ;
+
+	protected abstract Map<String, Object> getMap(HttpExchange exchange);
+	
+	
 
 }

@@ -27,7 +27,7 @@ public class KeyPressHandler extends AbstractHttpHandler {
         int comma = path.indexOf('=', q);
         String value = path.substring(comma + 1);
         handle(value);
-        send(exchange, "ok");
+        sendOK(exchange);
 	}
 
 	public void handle(String value) throws UnsupportedEncodingException {

@@ -62,7 +62,7 @@ public class CommandHandler extends AbstractHttpHandler {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		send(exchange, "ok");
+		sendOK(exchange);
 	}
 
 }

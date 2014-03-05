@@ -27,7 +27,7 @@ public class StreamMJPEGHandler extends AbstractHttpHandler {
 		BufferedImage im = getRobot().createScreenCapture(SCREEN_RECT);
         ByteArrayOutputStream output = new ByteArrayOutputStream(500000);
         ImageIO.write(im, IMAGE_CODEC, output);
-        send(exchange, output.toByteArray());
+        send(exchange, output.toByteArray(),"image/"+IMAGE_CODEC);
 	}
 
 }

@@ -36,7 +36,7 @@ public class ShellEditHandler extends AbstractHttpHandler{
 		}
 		
 		String content = shell.readPrompt();
-		send(exchange, content, "html");
+		sendHTML(exchange, content);
 	}
 	
 	

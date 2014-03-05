@@ -45,16 +45,20 @@ public abstract class AbstractHttpHandler implements HttpHandler{
 		return readOnly;
 	}
 	
+	protected void sendOK(HttpExchange exchange) throws IOException{
+		send(exchange, "<esito>ok</esito>", "text/html");
+	}
+	
+	protected void sendHTML(HttpExchange exchange,String content) throws IOException{
+		send(exchange, 200, content, new String[]{"text/html"});
+	}
+	
 	protected void send(HttpExchange exchange,String content,String... contentType) throws IOException {
 		send(exchange, 200, content, contentType);
 	}
 	
 	protected void send(HttpExchange exchange,int responseCode, String content,String... contentType) throws IOException {
-		if(contentType.length==0){
-			send(exchange,responseCode, content.getBytes(),"html");
-		}else{
-			send(exchange,responseCode, content.getBytes(),contentType);
-		}
+		send(exchange,responseCode, content.getBytes(),contentType);
 	}
 	
 	

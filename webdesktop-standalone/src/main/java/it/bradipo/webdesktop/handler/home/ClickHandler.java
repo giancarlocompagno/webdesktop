@@ -25,7 +25,7 @@ public class ClickHandler extends AbstractHttpHandler {
 		String path = exchange.getRequestURI().toASCIIString();
         String subpath = getSubpath(path);
         handle(subpath);
-        send(exchange, "ok");
+        sendOK(exchange);
 	}
 
 	
