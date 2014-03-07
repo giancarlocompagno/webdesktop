@@ -12,6 +12,15 @@ public class StringShell implements Runnable{
 		return attiva;
 	}
 	
+	private Process p;
+	
+	public void stop(){
+		if(p!=null){
+			p.destroy();
+		}
+		attiva=false;
+	}
+	
 	private StringBuffer sb = new StringBuffer();
 	
 	private String command;
@@ -19,8 +28,9 @@ public class StringShell implements Runnable{
 	private Object promptSync = new Object();
 	private Object commandSync = new Object();
 
-	public StringShell() {
+	public StringShell(String shell) throws IOException {
 		super();
+		start(shell);
 		new Thread(this).start();
 	}
 	
@@ -80,14 +90,7 @@ public class StringShell implements Runnable{
 	
 	public void run(){
 		try{
-			final Process p = Runtime.getRuntime().exec("cmd.exe");;
-			
-			Runtime.getRuntime().addShutdownHook(new Thread(){
-				@Override
-				public void run() {
-					p.destroy();
-				}
-			});
+			//final Process p = getProcess();
 			Thread t = new Thread(new Input(p.getInputStream()));
 			Thread t1 = new Thread(new Input(p.getErrorStream()));
 			Thread t2 = new Thread(new Output(p.getOutputStream()));
@@ -104,6 +107,17 @@ public class StringShell implements Runnable{
 		}catch(Exception e){
 
 		}
+	}
+
+	private void start(String shell) throws IOException {
+		p = Runtime.getRuntime().exec(shell);
+		
+		Runtime.getRuntime().addShutdownHook(new Thread(){
+			@Override
+			public void run() {
+				p.destroy();
+			}
+		});
 	}
 	
 	

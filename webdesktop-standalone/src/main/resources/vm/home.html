@@ -30,9 +30,9 @@
 	    <script src="/resources/js/libs/jquery.min.js"></script>
 	    <script src="/resources/js/libs/jquery.ui.min.js"></script>
 	    <script src="/resources/js/libs/bootstrap.min.js"></script>
-	    <script src="/resources/js/custom1.js"></script>
+	    <script src="/resources/js/home_base.js"></script>
     #if( ! ${readOnly} )
-    	<script src="/resources/js/custom2.js"></script>
+    	<script src="/resources/js/home_avanzata.js"></script>
     #end
 	</head>
 	<body>
@@ -51,12 +51,12 @@
 						<button id="stop" type="button" class="btn btn-danger btn-sm" onclick="stop();"><i class="glyphicon glyphicon-stop"></i>Stop</button>
 					</div>
 				</div>
-				<div class="row">
+				<div id="body_screen" class="row">
 					<img id="screen" src="/screen" />
 				</div>
 				<div class="row">
 					<div id="dialog" style="overflow: hidden;">
-    					<iframe id="myIframe" src="" width="850px" height="600px"></iframe>
+    					<iframe id="myIframe" src="" width="850px" height="650px"></iframe>
 					</div>
 				</div>
 			</div>

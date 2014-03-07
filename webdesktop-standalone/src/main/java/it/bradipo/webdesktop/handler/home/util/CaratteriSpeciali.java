@@ -1,4 +1,4 @@
-package it.bradipo.webdesktop.handler.util;
+package it.bradipo.webdesktop.handler.home.util;
 
 import java.awt.event.KeyEvent;
 import java.util.Collection;

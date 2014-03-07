@@ -10,8 +10,8 @@ import com.sun.net.httpserver.HttpExchange;
 public class ResourceHandler extends AbstractHttpHandler {
 	
 	
-	public ResourceHandler(String hostName,Robot robot,boolean readOnly) {
-		super(hostName,robot,readOnly);
+	public ResourceHandler(String hostName,String sistemaOperativo,Robot robot,boolean readOnly) {
+		super(hostName,sistemaOperativo,robot,readOnly);
 	}
 
 	@Override

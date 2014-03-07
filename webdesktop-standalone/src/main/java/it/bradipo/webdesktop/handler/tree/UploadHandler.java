@@ -20,9 +20,8 @@ import com.sun.net.httpserver.Headers;
 
 public class UploadHandler extends TreePageHandler{
 
-	public UploadHandler(String hostName, Robot robot, boolean readOnly) {
-		super(hostName, robot, readOnly);
-		// TODO Auto-generated constructor stub
+	public UploadHandler(String hostName,String sistemaOperativo,Robot robot,boolean readOnly) {
+		super(hostName,sistemaOperativo,robot,readOnly);
 	}
 
 	@Override

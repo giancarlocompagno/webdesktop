@@ -18,8 +18,8 @@ public class StreamMJPEGHandler extends AbstractHttpHandler {
 	
 	private String IMAGE_CODEC = "jpeg";
 	
-	public StreamMJPEGHandler(String hostName,Robot robot,boolean readOnly) {
-		super(hostName,robot,readOnly);
+	public StreamMJPEGHandler(String hostName,String sistemaOperativo,Robot robot,boolean readOnly) {
+		super(hostName,sistemaOperativo,robot,readOnly);
 	}
 
 	@Override

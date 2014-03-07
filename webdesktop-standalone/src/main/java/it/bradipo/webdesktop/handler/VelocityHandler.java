@@ -20,8 +20,8 @@ public abstract class VelocityHandler  extends AbstractHttpHandler{
 		
 	VelocityEngine ve = new VelocityEngine();
 	
-	public VelocityHandler(String hostName, Robot robot, boolean readOnly) {
-		super(hostName, robot, readOnly);
+	public VelocityHandler(String hostName,String sistemaOperativo,Robot robot,boolean readOnly) {
+		super(hostName,sistemaOperativo,robot,readOnly);
 		ve = new VelocityEngine();
 		ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "file");
 		ve.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, new File(VelocityHandler.class.getResource("/vm/" ).getFile()).getAbsolutePath());
@@ -44,14 +44,15 @@ public abstract class VelocityHandler  extends AbstractHttpHandler{
 	
 	@Override
 	public void handle(HttpExchange exchange) throws IOException {
-		Map<String,Object> map = getMap(exchange);
-		String content = template(getTemplate(exchange), map);
+		HttpRequest request = new HttpRequest(exchange);
+		Map<String,Object> map = getMap(request);
+		String content = template(getTemplate(request), map);
 	    sendHTML(exchange, content);
 	}
 
-	protected abstract String getTemplate(HttpExchange exchange) ;
+	protected abstract String getTemplate(HttpRequest request) ;
 
-	protected abstract Map<String, Object> getMap(HttpExchange exchange);
+	protected abstract Map<String, Object> getMap(HttpRequest request);
 	
 	
 

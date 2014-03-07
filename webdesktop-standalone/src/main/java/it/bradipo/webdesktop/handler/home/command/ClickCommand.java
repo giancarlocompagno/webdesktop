@@ -1,4 +1,4 @@
-package it.bradipo.webdesktop.handler.home;
+package it.bradipo.webdesktop.handler.home.command;
 
 import it.bradipo.webdesktop.handler.AbstractHttpHandler;
 
@@ -9,25 +9,16 @@ import java.io.IOException;
 
 import com.sun.net.httpserver.HttpExchange;
 
-public class ClickHandler extends AbstractHttpHandler {
+public class ClickCommand extends AbstractCommand {
 	
 	public enum CLICKTYPE{MOUSEUP,MOUSEDOWN,RIGHTCLICK};
 	
 	private CLICKTYPE type;
 
-	public ClickHandler(String hostName,Robot robot,boolean readOnly,CLICKTYPE type) {
-		super(hostName,robot,readOnly);
+	public ClickCommand(Robot robot,CLICKTYPE type) {
+		super(robot);
 		this.type=type;
 	}
-
-	@Override
-	public void handle(HttpExchange exchange) throws IOException {
-		String path = exchange.getRequestURI().toASCIIString();
-        String subpath = getSubpath(path);
-        handle(subpath);
-        sendOK(exchange);
-	}
-
 	
 
 	public void handle(String value) {

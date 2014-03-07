@@ -1,34 +1,32 @@
-package it.bradipo.webdesktop.handler.home;
+package it.bradipo.webdesktop.handler.home.command;
 
-import it.bradipo.webdesktop.handler.AbstractHttpHandler;
-import it.bradipo.webdesktop.handler.util.CaratteriSpeciali;
+import it.bradipo.webdesktop.handler.home.util.CaratteriSpeciali;
 
 import java.awt.Robot;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 import com.sun.net.httpserver.HttpExchange;
 
-public class KeyPressHandler extends AbstractHttpHandler {
+public class KeyPressCommand extends AbstractCommand {
 	
 	public enum KEYTYPE{KEYPRESS,KEYDOWN,KEYUP};
 	
 	private KEYTYPE keytype;
 
-	public KeyPressHandler(String hostName,Robot robot,boolean readOnly,KEYTYPE keytype) {
-		super(hostName,robot,readOnly);
+	public KeyPressCommand(Robot robot,KEYTYPE keytype) {
+		super(robot);
 		this.keytype=keytype;
 	}
 
-	@Override
+	/*@Override
 	public void handle(HttpExchange exchange) throws IOException {		String path = exchange.getRequestURI().toASCIIString();
         int q = path.indexOf('?');
         int comma = path.indexOf('=', q);
         String value = path.substring(comma + 1);
         handle(value);
         sendOK(exchange);
-	}
+	}*/
 
 	public void handle(String value) throws UnsupportedEncodingException {
 		String javascriptKeyCodeS = URLDecoder.decode(value,"ISO-8859-1");

@@ -1,8 +1,11 @@
 package it.bradipo.webdesktop.handler.home;
 
 import it.bradipo.webdesktop.handler.AbstractHttpHandler;
-import it.bradipo.webdesktop.handler.home.ClickHandler.CLICKTYPE;
-import it.bradipo.webdesktop.handler.home.KeyPressHandler.KEYTYPE;
+import it.bradipo.webdesktop.handler.AbstractHttpHandler.HttpRequest;
+import it.bradipo.webdesktop.handler.home.command.ClickCommand;
+import it.bradipo.webdesktop.handler.home.command.KeyPressCommand;
+import it.bradipo.webdesktop.handler.home.command.ClickCommand.CLICKTYPE;
+import it.bradipo.webdesktop.handler.home.command.KeyPressCommand.KEYTYPE;
 
 import java.awt.Robot;
 import java.awt.event.InputEvent;
@@ -12,31 +15,31 @@ import com.sun.net.httpserver.HttpExchange;
 
 public class CommandHandler extends AbstractHttpHandler {
 	
-	private KeyPressHandler kp;
-	private KeyPressHandler ku;
-	private KeyPressHandler kd;
-	private ClickHandler md;
-	private ClickHandler mu;
-	private ClickHandler rc;
+	private KeyPressCommand kp;
+	private KeyPressCommand ku;
+	private KeyPressCommand kd;
+	private ClickCommand md;
+	private ClickCommand mu;
+	private ClickCommand rc;
 	
 	
-	public CommandHandler(String hostName,Robot robot,boolean readOnly) {
-		super(hostName,robot,readOnly);
+	public CommandHandler(String hostName,String sistemaOperativo,Robot robot,boolean readOnly) {
+		super(hostName,sistemaOperativo,robot,readOnly);
 		
-		kp=new KeyPressHandler(hostName, robot,isReadOnly(), KEYTYPE.KEYPRESS);
-		ku=new KeyPressHandler(hostName, robot,isReadOnly(), KEYTYPE.KEYUP);
-		kd=new KeyPressHandler(hostName, robot,isReadOnly(), KEYTYPE.KEYDOWN);
-		md=new ClickHandler(hostName, robot,isReadOnly(), CLICKTYPE.MOUSEDOWN);
-		mu=new ClickHandler(hostName, robot,isReadOnly(), CLICKTYPE.MOUSEUP);
-		rc=new ClickHandler(hostName, robot,isReadOnly(), CLICKTYPE.RIGHTCLICK);
+		kp=new KeyPressCommand( robot,KEYTYPE.KEYPRESS);
+		ku=new KeyPressCommand( robot, KEYTYPE.KEYUP);
+		kd=new KeyPressCommand(robot, KEYTYPE.KEYDOWN);
+		md=new ClickCommand( robot, CLICKTYPE.MOUSEDOWN);
+		mu=new ClickCommand( robot, CLICKTYPE.MOUSEUP);
+		rc=new ClickCommand(robot, CLICKTYPE.RIGHTCLICK);
 		
 	}
 
 	@Override
 	public void handle(HttpExchange exchange) throws IOException {
 		try{
-			String path = exchange.getRequestURI().toASCIIString();
-			String subpath = getSubpath(path);
+			HttpRequest httpRequest = new HttpRequest(exchange);
+			String subpath = httpRequest.getAllParams();
 			String[] comandi =subpath.split("_");
 			for (int i = 0; i < comandi.length; i++) {
 				String comando = comandi[i];

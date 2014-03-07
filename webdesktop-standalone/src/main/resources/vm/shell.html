@@ -9,7 +9,7 @@
 <script src="/resources/js/libs/jquery.ui.min.js"></script>
 <script src="/resources/js/libs/jquery.ui.touch.js"></script>
 <script src="/resources/js/libs/required.js"></script>
-<script src="/resources/js/prompt.js"></script>
+<script src="/resources/js/shell.js"></script>
 <style>
 	.bodyshellcontent{
 	height: 300px;
@@ -23,11 +23,36 @@
 			<div class="page-header">
 				<h1>Prompt/Shell</h1>
 			</div>
-
-			<h3>Gestione Remota</h3>
-			<p>Per terminare i processi utilizzare la funzionalita: Gestione Processi</p>
-			<pre id="bodyshellcontent" class="bodyshellcontent" class="prettyprint linenums"></pre>
-			<pre  class="prettyprint linenums"><ul class="linenums"><li id="prompt">[scrivi qui i tuoi comandi]</li></ul></pre>
+			<h3><b>Gestione Remota:</b> Per terminare/riavviare il Prompt/Shell scrivi <b><i>exit</i></b></h4>
+			<div id="tabs">
+				<ol>
+					<li><a href="#fragment-0" index="0">Shell 1</a></li>
+					<li><a href="#fragment-1" index="1">Shell 2</a></li>
+					<li><a href="#fragment-2" index="2">Shell 3</a></li>
+					<li><a href="#fragment-3" index="3">Shell 4</a></li>
+					<li><a href="#fragment-4" index="4">Shell 5</a></li>
+				</ol>
+				<div id="fragment-0">
+					<pre id="bodyshellcontent-0" class="bodyshellcontent" class="prettyprint linenums"></pre>
+				</div>
+				<div id="fragment-1">
+					<pre id="bodyshellcontent-1" class="bodyshellcontent" class="prettyprint linenums"></pre>
+				</div>
+				<div id="fragment-2">
+					<pre id="bodyshellcontent-2" class="bodyshellcontent" class="prettyprint linenums"></pre>
+				</div>
+				<div id="fragment-3">
+					<pre id="bodyshellcontent-3" class="bodyshellcontent" class="prettyprint linenums"></pre>
+				</div>
+				<div id="fragment-4">
+					<pre id="bodyshellcontent-4" class="bodyshellcontent" class="prettyprint linenums"></pre>
+				</div>
+				<div id="command-line">
+					<b>Scrivi qui i tuoi comandi:</b><br>
+					<pre  class="prettyprint linenums"><ul class="linenums"><li id="shell"></li></ul></pre>
+				</div>
+			</div>		
+			
     </section>      
 	</div>
 </body>

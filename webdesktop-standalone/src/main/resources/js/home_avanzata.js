@@ -103,13 +103,13 @@ $(document).ready(function() {
 	
 	playCommand();
 
-	$("#screen").keydown(function (e){
+	$(document).keydown(function (e){
 		if(keydownup[e.keyCode]==null){
 			addCommand("KP"+e.keyCode); 
 		}
 	});
 	
-	$("#screen").keydown(function (e){
+	$(document).keydown(function (e){
 		if(keydownup[e.keyCode]!=null && keydownup[e.keyCode]==false){
 			keydownup[e.keyCode]=true;
 			addCommand("KD"+e.keyCode);
@@ -117,25 +117,25 @@ $(document).ready(function() {
 		
 	});
 	
-	$("#screen").keyup(function (e){
+	$(document).keyup(function (e){
 		if(keydownup[e.keyCode]!=null){
 			addCommand("KU"+e.keyCode);
 			keydownup[e.keyCode]=false;
 		}
 	});
 	
-	$("#screen").mouseup(function(e){
+	$(document).mouseup(function(e){
 		var c  = GetCoordinates(e);
 		addCommand("MU"+c);
 		
 	});
 	
-	$("#screen").mousedown(function(e){
+	$(document).mousedown(function(e){
 		var c  = GetCoordinates(e);
 		addCommand("MD"+c);
 	});
 	
-	$("#screen").bind("contextmenu",function(e){
+	$(document).bind("contextmenu",function(e){
 		var c  = GetCoordinates(e);
 		addCommand("RC"+c);
 		return false;
@@ -149,7 +149,8 @@ $(document).ready(function() {
 	    autoOpen: false,
 	    modal: true,
 	    width: 900,
-	    height: 650,
+	    height: 700,
+	    position: ['center',20],
 	    open: function(ev, ui){
 	             $('#myIframe').attr('src',url);
 	          },

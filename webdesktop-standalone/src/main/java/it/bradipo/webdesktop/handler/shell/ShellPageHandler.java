@@ -7,16 +7,16 @@ import java.util.Map;
 import com.sun.net.httpserver.HttpExchange;
 
 import it.bradipo.webdesktop.handler.VelocityHandler;
+import it.bradipo.webdesktop.handler.AbstractHttpHandler.HttpRequest;
 
 public class ShellPageHandler extends VelocityHandler {
 
-	public ShellPageHandler(String hostName, Robot robot, boolean readOnly) {
-		super(hostName, robot, readOnly);
-		// TODO Auto-generated constructor stub
+	public ShellPageHandler(String hostName,String sistemaOperativo,Robot robot,boolean readOnly) {
+		super(hostName,sistemaOperativo,robot,readOnly);
 	}
 
 	@Override
-	protected Map<String, Object> getMap(HttpExchange exchange) {
+	protected Map<String, Object> getMap(HttpRequest request) {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("hostName",getHostName());
 		map.put("readOnly",isReadOnly());
@@ -24,7 +24,7 @@ public class ShellPageHandler extends VelocityHandler {
 	}
 
 	@Override
-	protected String getTemplate(HttpExchange exchange) {
+	protected String getTemplate(HttpRequest request) {
 		return "shell.html";
 	}
 }

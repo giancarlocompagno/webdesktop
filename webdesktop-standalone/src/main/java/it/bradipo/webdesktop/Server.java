@@ -24,6 +24,7 @@ public class Server {
 	private HttpServer server;
 	private String hostName;
 	private Robot robot;
+	private String sistemaOperativo;
 	private boolean readOnly;
 	
 	
@@ -31,23 +32,24 @@ public class Server {
 		server = HttpServer.create(new InetSocketAddress(serverPort), 0);
 		hostName = InetAddress.getLocalHost().getHostName();
 		this.readOnly=readOnly;
+		this.sistemaOperativo=System.getProperty("os.name");
 		robot = new Robot();
 		init();
 	}
 	
 	
 	private void init(){
-		this.server.createContext("/", new HomePageHandler(hostName,robot,readOnly));
-		this.server.createContext("/resources", new ResourceHandler(hostName,robot,readOnly));
-		this.server.createContext("/screen", new StreamMJPEGHandler(hostName,robot,readOnly));
+		this.server.createContext("/", new HomePageHandler(hostName,sistemaOperativo,robot,readOnly));
+		this.server.createContext("/resources", new ResourceHandler(hostName,sistemaOperativo,robot,readOnly));
+		this.server.createContext("/screen", new StreamMJPEGHandler(hostName,sistemaOperativo,robot,readOnly));
 		if(!readOnly){
-			this.server.createContext("/taskmanager.html", new TaskManagerPageHandler(hostName,robot,readOnly));
-			this.server.createContext("/tree.html", new TreePageHandler(hostName,robot,readOnly));
-			this.server.createContext("/shell.html", new ShellPageHandler(hostName,robot,readOnly));
-			this.server.createContext("/shelledit", new ShellEditHandler(hostName,robot,readOnly));
-			this.server.createContext("/command", new CommandHandler(hostName,robot,readOnly));
-			this.server.createContext("/tree", new TreeHandler(hostName,robot,readOnly));
-			this.server.createContext("/upload", new UploadHandler(hostName, robot, readOnly));
+			this.server.createContext("/taskmanager.html", new TaskManagerPageHandler(hostName,sistemaOperativo,robot,readOnly));
+			this.server.createContext("/tree.html", new TreePageHandler(hostName,sistemaOperativo,robot,readOnly));
+			this.server.createContext("/shell.html", new ShellPageHandler(hostName,sistemaOperativo,robot,readOnly));
+			this.server.createContext("/shelledit", new ShellEditHandler(hostName,sistemaOperativo,robot,readOnly));
+			this.server.createContext("/command", new CommandHandler(hostName,sistemaOperativo,robot,readOnly));
+			this.server.createContext("/tree", new TreeHandler(hostName,sistemaOperativo,robot,readOnly));
+			this.server.createContext("/upload", new UploadHandler(hostName, sistemaOperativo,robot, readOnly));
 		}
 	}
 	

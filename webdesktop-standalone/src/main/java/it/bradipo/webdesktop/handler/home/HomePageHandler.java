@@ -7,16 +7,15 @@ import java.util.Map;
 import com.sun.net.httpserver.HttpExchange;
 
 import it.bradipo.webdesktop.handler.VelocityHandler;
-import it.bradipo.webdesktop.handler.util.CaratteriSpeciali;
+import it.bradipo.webdesktop.handler.home.util.CaratteriSpeciali;
 
 public class HomePageHandler extends VelocityHandler {
 
-	public HomePageHandler(String hostName, Robot robot, boolean readOnly) {
-		super(hostName, robot, readOnly);
-		// TODO Auto-generated constructor stub
+	public HomePageHandler(String hostName,String sistemaOperativo,Robot robot,boolean readOnly) {
+		super(hostName,sistemaOperativo,robot,readOnly);
 	}
 	@Override
-	protected Map<String, Object> getMap(HttpExchange exchange) {
+	protected Map<String, Object> getMap(HttpRequest request) {
 		String ss = "";
 		for(Integer x : CaratteriSpeciali.keydownupJavaKeyCodes()){
 			ss = ss + "keydownup["+x+"] = false;\n"; 
@@ -30,7 +29,7 @@ public class HomePageHandler extends VelocityHandler {
 	}
 	
 	@Override
-	protected String getTemplate(HttpExchange exchange) {
+	protected String getTemplate(HttpRequest request) {
 		return "home.html";
 	}
 

@@ -1,6 +1,7 @@
 package it.bradipo.webdesktop.handler.tree;
 
 import it.bradipo.webdesktop.handler.AbstractHttpHandler;
+import it.bradipo.webdesktop.handler.AbstractHttpHandler.HttpRequest;
 
 import java.awt.Robot;
 import java.io.File;
@@ -18,18 +19,17 @@ import com.sun.net.httpserver.HttpExchange;
 public class TreeHandler extends AbstractHttpHandler {
 	
 	
-	public TreeHandler(String hostName,Robot robot,boolean readOnly) {
-		super(hostName,robot,readOnly);
+	public TreeHandler(String hostName,String sistemaOperativo,Robot robot,boolean readOnly) {
+		super(hostName,sistemaOperativo,robot,readOnly);
 	}
 
 	@Override
 	public void handle(HttpExchange exchange) throws IOException {
 		try{
-		String path = exchange.getRequestURI().toString();
-		path = URLDecoder.decode(path,"ISO-8859-1");
+		HttpRequest request = new HttpRequest(exchange);
 		File file = null;
 		File[] fs = null;
-		String filename = path.substring(path.indexOf("?id=")+4);
+		String filename = request.getParametro("id");
 		boolean isRoot = false;
 		 
 		if(filename.equals("#")){
@@ -70,7 +70,7 @@ public class TreeHandler extends AbstractHttpHandler {
 			sendHTML(exchange, s.toString());
 		}else if(file!=null){
 			FileInputStream in = new FileInputStream(file);
-			exchange.getResponseHeaders().set("content-disposition", "attachment;filename=" + file.getName());
+			exchange.getResponseHeaders().set("content-disposition", "attachment;filename=\"" + file.getName()+"\"");
 			
 			List<String> arrayList = new ArrayList<String>();
 			arrayList.add("application/octet-stream");
