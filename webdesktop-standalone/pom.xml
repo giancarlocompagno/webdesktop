@@ -6,4 +6,11 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>webdesktop-standalone</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>it.bradipo.webdesktop</groupId>
+  		<artifactId>webdesktop-core</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>

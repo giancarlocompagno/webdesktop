@@ -54,7 +54,6 @@ public class ServerGUI extends JPanel{
     protected JButton start,stop;
     protected JTextField field;
     protected JLabel label;
-    protected JCheckBox readonly;
     
     protected Server server;
 
@@ -75,7 +74,6 @@ public class ServerGUI extends JPanel{
             }
         });
         
-        readonly = new JCheckBox("Read Only");
     	
     	start = new JButton("Avvio server");
         start.setVerticalTextPosition(AbstractButton.CENTER);
@@ -95,8 +93,7 @@ public class ServerGUI extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					int port = Integer.parseInt(field.getText());
-					boolean readOnly = readonly.isSelected();
-					server = new Server(port,readOnly);
+					server = new Server(port);
 					server.start();
 					label.setText("Status: avviato");
 				} catch (Exception e1) {
@@ -125,7 +122,6 @@ public class ServerGUI extends JPanel{
 
         //Add Components to this container, using the default FlowLayout.
         add(field);
-        add(readonly);
         add(start);
         add(stop);
         add(label);

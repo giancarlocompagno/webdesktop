@@ -1,5 +1,7 @@
 package it.bradipo.webdesktop;
 
+import it.bradipo.webdesktop.handler.HttpHandler;
+import it.bradipo.webdesktop.handler.ProxyHandler;
 import it.bradipo.webdesktop.handler.ResourceHandler;
 import it.bradipo.webdesktop.handler.home.CommandHandler;
 import it.bradipo.webdesktop.handler.home.HomePageHandler;
@@ -10,46 +12,33 @@ import it.bradipo.webdesktop.handler.task.TaskManagerPageHandler;
 import it.bradipo.webdesktop.handler.tree.TreeHandler;
 import it.bradipo.webdesktop.handler.tree.TreePageHandler;
 import it.bradipo.webdesktop.handler.tree.UploadHandler;
+import it.bradipo.webdesktop.handler.util.HandlerManager;
 
 import java.awt.Robot;
 
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import com.sun.net.httpserver.HttpServer;
 
 public class Server {
 	
-	private HttpServer server;
-	private String hostName;
-	private Robot robot;
-	private String sistemaOperativo;
-	private boolean readOnly;
-	
-	
-	public Server(int serverPort,boolean readOnly) throws Exception {
-		server = HttpServer.create(new InetSocketAddress(serverPort), 0);
-		hostName = InetAddress.getLocalHost().getHostName();
-		this.readOnly=readOnly;
-		this.sistemaOperativo=System.getProperty("os.name");
-		robot = new Robot();
+	public HttpServer server;
+
+
+	public Server(int serverPort) throws Exception {
+		this.server = HttpServer.create(new InetSocketAddress(serverPort), 0);
 		init();
 	}
 	
 	
-	private void init(){
-		this.server.createContext("/", new HomePageHandler(hostName,sistemaOperativo,robot,readOnly));
-		this.server.createContext("/resources", new ResourceHandler(hostName,sistemaOperativo,robot,readOnly));
-		this.server.createContext("/screen", new StreamMJPEGHandler(hostName,sistemaOperativo,robot,readOnly));
-		if(!readOnly){
-			this.server.createContext("/taskmanager.html", new TaskManagerPageHandler(hostName,sistemaOperativo,robot,readOnly));
-			this.server.createContext("/tree.html", new TreePageHandler(hostName,sistemaOperativo,robot,readOnly));
-			this.server.createContext("/shell.html", new ShellPageHandler(hostName,sistemaOperativo,robot,readOnly));
-			this.server.createContext("/shelledit", new ShellEditHandler(hostName,sistemaOperativo,robot,readOnly));
-			this.server.createContext("/command", new CommandHandler(hostName,sistemaOperativo,robot,readOnly));
-			this.server.createContext("/tree", new TreeHandler(hostName,sistemaOperativo,robot,readOnly));
-			this.server.createContext("/upload", new UploadHandler(hostName, sistemaOperativo,robot, readOnly));
+	private void init() throws Exception{
+		
+		for(Entry<String, HttpHandler> entry : HandlerManager.getHttpHandlers()){
+			this.server.createContext(entry.getKey(), new ProxyHandler(entry.getValue()));
 		}
 	}
 	
@@ -63,7 +52,8 @@ public class Server {
 	
 	
 	public static void main(String[] args) throws Exception {
-		Server server = new Server(6060,true);
+		
+		Server server = new Server(6060);
 		server.start();
 		System.out.println("in attesa");
 	}

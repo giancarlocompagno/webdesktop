@@ -6,4 +6,62 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>webdesktop-servlet</artifactId>
+  <packaging>war</packaging>
+  
+  <dependencies>
+  	
+	<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+  	
+
+	<dependency>
+		<groupId>it.bradipo.webdesktop</groupId>
+		<artifactId>webdesktop-core</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+  </dependencies>
+  <build>
+		<defaultGoal>package</defaultGoal>
+		<finalName>webdesktop</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1-beta-1</version>
+				<configuration>
+
+					<webResources>
+						<resource>
+							<directory>src/main/webapp</directory>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jboss-maven-plugin</artifactId> 
+				<version>1.5.0</version> <executions> <execution> <phase>package</phase> 
+				<goals> <goal>hardundeploy</goal> <goal>harddeploy</goal> </goals> </execution> 
+				</executions> <configuration> <jbossHome>c:\eclipse\jboss-6.1.0.Final</jbossHome> 
+				<serverName>RER</serverName> <fileName>target/ontoir-cruscotto-web.war</fileName> 
+				</configuration> </plugin> -->
+		</plugins>
+
+	</build>
 </project>
