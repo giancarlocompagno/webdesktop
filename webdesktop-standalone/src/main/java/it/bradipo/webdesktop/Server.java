@@ -2,25 +2,10 @@ package it.bradipo.webdesktop;
 
 import it.bradipo.webdesktop.handler.HttpHandler;
 import it.bradipo.webdesktop.handler.ProxyHandler;
-import it.bradipo.webdesktop.handler.ResourceHandler;
-import it.bradipo.webdesktop.handler.home.CommandHandler;
-import it.bradipo.webdesktop.handler.home.HomePageHandler;
-import it.bradipo.webdesktop.handler.home.StreamMJPEGHandler;
-import it.bradipo.webdesktop.handler.shell.ShellEditHandler;
-import it.bradipo.webdesktop.handler.shell.ShellPageHandler;
-import it.bradipo.webdesktop.handler.task.TaskManagerPageHandler;
-import it.bradipo.webdesktop.handler.tree.TreeHandler;
-import it.bradipo.webdesktop.handler.tree.TreePageHandler;
-import it.bradipo.webdesktop.handler.tree.UploadHandler;
 import it.bradipo.webdesktop.handler.util.HandlerManager;
 
-import java.awt.Robot;
-
-
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import com.sun.net.httpserver.HttpServer;
 

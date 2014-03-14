@@ -11,6 +11,11 @@
   <dependencies>
   	
 	<dependency>
+		<groupId>it.bradipo.webdesktop</groupId>
+		<artifactId>webdesktop-core</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 			<version>6.0</version>
@@ -18,11 +23,6 @@
 		</dependency>
   	
 
-	<dependency>
-		<groupId>it.bradipo.webdesktop</groupId>
-		<artifactId>webdesktop-core</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
   </dependencies>
   <build>
 		<defaultGoal>package</defaultGoal>
