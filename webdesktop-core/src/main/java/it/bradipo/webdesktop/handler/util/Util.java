@@ -26,8 +26,12 @@ public class Util {
 	
 	
 	public static byte[] loadResource(String resource) throws IOException {
-		InputStream is = Util.class.getResourceAsStream(resource);
+		InputStream is = loadInputStream(resource);
 		return loadResources(is);
+	}
+	
+	public static InputStream loadInputStream(String resource) throws IOException {
+		return Util.class.getResourceAsStream(resource);		
 	}
 
 }

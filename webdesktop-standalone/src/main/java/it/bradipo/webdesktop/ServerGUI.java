@@ -56,6 +56,9 @@ public class ServerGUI extends JPanel{
     protected JLabel label;
     
     protected Server server;
+    
+    protected JCheckBox enableHttps;
+    protected JCheckBox enableAuthentication;
 
     public ServerGUI() {
         
@@ -86,6 +89,9 @@ public class ServerGUI extends JPanel{
         
         
         label = new JLabel("Status: da avviare");
+        
+        enableHttps = new JCheckBox("Enable Https",true);
+        enableAuthentication = new JCheckBox("Enable Authentication",true);
 
         start.addActionListener(new ActionListener() {
 			
@@ -93,15 +99,15 @@ public class ServerGUI extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					int port = Integer.parseInt(field.getText());
-					server = new Server(port);
+					boolean enableHttpsB = enableHttps.isSelected();
+					boolean enableAuthenticationB = enableAuthentication.isSelected();
+					server = new Server(port,enableHttpsB,enableAuthenticationB);
 					server.start();
 					label.setText("Status: avviato");
 				} catch (Exception e1) {
 					label.setText(e1.getMessage());
 					e1.printStackTrace();
 				}
-				
-				
 			}
 		});
         stop.addActionListener(new ActionListener() {
@@ -122,6 +128,8 @@ public class ServerGUI extends JPanel{
 
         //Add Components to this container, using the default FlowLayout.
         add(field);
+        add(enableHttps);
+        add(enableAuthentication);
         add(start);
         add(stop);
         add(label);

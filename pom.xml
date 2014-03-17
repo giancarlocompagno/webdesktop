@@ -9,4 +9,12 @@
   	<module>webdesktop-core</module>
   	<module>webdesktop-standalone</module>
   </modules>
+  <dependencies>
+	<dependency>
+		<groupId>org.apache.velocity</groupId>
+		<artifactId>velocity</artifactId>
+		<version>1.7</version>
+		<scope>provided</scope>
+	</dependency>
+  </dependencies>
 </project>
