@@ -22,7 +22,6 @@ public class Server extends HttpServlet{
 	public void execute(HttpServletRequest request, HttpServletResponse response){
 		String uri = request.getRequestURI();
 		
-		
 	}
 	
 

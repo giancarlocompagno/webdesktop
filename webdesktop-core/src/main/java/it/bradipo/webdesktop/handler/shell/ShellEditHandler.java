@@ -7,8 +7,10 @@ import java.util.Map;
 
 
 
+
 import it.bradipo.webdesktop.ServerData;
 import it.bradipo.webdesktop.handler.HttpHandler;
+import it.bradipo.webdesktop.handler.so.SOFactory;
 import it.bradipo.webdesktop.http.IHttpRequest;
 import it.bradipo.webdesktop.http.IHttpResponse;
 
@@ -32,7 +34,7 @@ public class ShellEditHandler implements HttpHandler{
 		StringShell shell = shells.get(id);
 		
 		if(shell==null || !shell.isAttiva()){
-			shell = new StringShell("cmd.exe");
+			shell = SOFactory.getFactory().getShell();
 			shells.put(id, shell);
 		}
 		

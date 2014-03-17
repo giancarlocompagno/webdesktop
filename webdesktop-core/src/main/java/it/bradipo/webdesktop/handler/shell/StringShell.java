@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class StringShell implements Runnable{
+public abstract class StringShell implements Runnable{
 	
 	
 	private boolean attiva = true;
@@ -27,10 +27,12 @@ public class StringShell implements Runnable{
 	
 	private Object promptSync = new Object();
 	private Object commandSync = new Object();
+	
+	protected abstract String getShellCommand();
 
-	public StringShell(String shell) throws IOException {
+	public StringShell() throws IOException {
 		super();
-		start(shell);
+		start();
 		new Thread(this).start();
 	}
 	
@@ -109,8 +111,9 @@ public class StringShell implements Runnable{
 		}
 	}
 
-	private void start(String shell) throws IOException {
-		p = Runtime.getRuntime().exec(shell);
+	private void start() throws IOException {
+		String shellCommand = getShellCommand();
+		p = Runtime.getRuntime().exec(shellCommand);
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(){
 			@Override

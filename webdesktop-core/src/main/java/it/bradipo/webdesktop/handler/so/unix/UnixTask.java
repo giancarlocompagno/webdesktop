@@ -1,8 +1,8 @@
-package it.bradipo.webdesktop.handler.task.unix;
+package it.bradipo.webdesktop.handler.so.unix;
 
 import it.bradipo.webdesktop.handler.task.Task;
 
-public class UnixTask extends Task{
+class UnixTask extends Task{
 
 	@Override
 	public String getPID() {

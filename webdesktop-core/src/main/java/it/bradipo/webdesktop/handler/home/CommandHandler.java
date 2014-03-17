@@ -37,8 +37,8 @@ public class CommandHandler implements HttpHandler {
 	@Override
 	public void handle(IHttpRequest httpRequest,IHttpResponse httpResponse) throws IOException {
 		try{
-			String subpath = httpRequest.getAllParams();
-			String[] comandi =subpath.split("_");
+			String command = httpRequest.getParametro("command");
+			String[] comandi =command.split("_");
 			for (int i = 0; i < comandi.length; i++) {
 				String comando = comandi[i];
 				if(!comando.isEmpty()){

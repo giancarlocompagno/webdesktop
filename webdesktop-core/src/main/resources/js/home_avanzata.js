@@ -37,7 +37,7 @@ function playCommand(){
 			var commandToSend = getCommands();
 			if(commandToSend!=''){
 				$.ajax({
-					url : './command?'+commandToSend,
+					url : './command?command='+commandToSend,
 				});
 			}
 			

@@ -1,9 +1,9 @@
-package it.bradipo.webdesktop.handler.task.windows;
+package it.bradipo.webdesktop.handler.so.windows;
 
 import it.bradipo.webdesktop.handler.task.ITask;
 import it.bradipo.webdesktop.handler.task.TaskManager;
 
-public class WindowsTaskManager extends TaskManager {
+class WindowsTaskManager extends TaskManager {
 	
 	public WindowsTaskManager() {
 		

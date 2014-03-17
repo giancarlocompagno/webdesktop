@@ -7,7 +7,7 @@ import java.util.Map;
 
 import it.bradipo.webdesktop.ServerData;
 import it.bradipo.webdesktop.handler.VelocityHandler;
-import it.bradipo.webdesktop.handler.task.windows.WindowsTaskManager;
+import it.bradipo.webdesktop.handler.so.SOFactory;
 import it.bradipo.webdesktop.http.IHttpRequest;
 import it.bradipo.webdesktop.http.IHttpResponse;
 
@@ -36,7 +36,7 @@ public class TaskManagerPageHandler extends VelocityHandler {
 
 	private void elaboraRichiesta(IHttpRequest request) {
 		if(taskManager==null){
-			taskManager = new WindowsTaskManager();
+			taskManager = SOFactory.getFactory().getTaskManager();
 		}
 		String pid  = request.getParametro("killprocess");
 		if(pid!=null){
