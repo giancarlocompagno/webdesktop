@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,10 +25,16 @@ public class HttpRequest implements IHttpRequest{
 	private Map<String,String[]> maps = new HashMap<String, String[]>();
 	
 	public HttpRequest(HttpServletRequest request) {
+		this.request=request;
 		this.maps.putAll(request.getParameterMap());
-		
+		Enumeration<String> en = request.getParameterNames();
+		while(en.hasMoreElements()){
+			String k = en.nextElement();
+			String v = request.getParameter(k);
+			this.maps.put(k,new String[]{v});	
+		}
 		this.uri = request.getRequestURI();
-		this.url = request.getRequestURL().toString();
+		this.url = request.getRequestURI().substring(request.getContextPath().length());
 		this.allParams = "";
 		int index = uri.indexOf("?");
 		if(index>=0){
@@ -60,7 +67,7 @@ public class HttpRequest implements IHttpRequest{
 	@Override
 	public String getParametro(String parametro) {
 		String[] s = maps.get(parametro);
-		return s.length>0?s[0]:null;
+		return s!=null && s.length>0?s[0]:null;
 	}
 
 	@Override
@@ -81,6 +88,12 @@ public class HttpRequest implements IHttpRequest{
 	public IHttpHeaderRequest getHttpHeaderRequest() {
 		// TODO Auto-generated method stub
 		return header;
+	}
+
+
+	@Override
+	public String getContextPath() {
+		return request.getContextPath();
 	}
 
 }

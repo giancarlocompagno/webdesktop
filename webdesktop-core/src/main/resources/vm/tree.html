@@ -2,18 +2,21 @@
 <html>
 <head>
 	<title>WebDesktop ${hostName}: Gestione File</title>
-	  <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css" />
-	  <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap-theme.min.css" />
-	  <link rel="stylesheet" href="/resources/css/tree/style.min.css" />
-	  <link rel="stylesheet" href="/resources/css/smoothness/jquery.ui.custom.min.css" />
-	  <script src="/resources/js/libs/jquery.min.js"></script>
-	  <script src="/resources/js/libs/jquery.ui.min.js"></script>
-	  <script src="/resources/js/libs/jquery.ui.touch.js"></script>
-	  <script src="/resources/js/libs/jstree.min.js"></script>
-	  <script src="/resources/js/tree.js"></script>
+	  <link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/bootstrap/bootstrap.min.css" />
+	  <link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/bootstrap/bootstrap-theme.min.css" />
+	  <link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/tree/style.min.css" />
+	  <link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/smoothness/jquery.ui.custom.min.css" />
+	  <script type="text/javascript">
+			var CONTEXT_PATH = '${CONTEXT_PATH}';
+		</script>
+	  <script type="text/javascript" src="${CONTEXT_PATH}/resources/js/libs/jquery.min.js"></script>
+	  <script type="text/javascript" src="${CONTEXT_PATH}/resources/js/libs/jquery.ui.min.js"></script>
+	  <script type="text/javascript" src="${CONTEXT_PATH}/resources/js/libs/jquery.ui.touch.js"></script>
+	  <script type="text/javascript" src="${CONTEXT_PATH}/resources/js/libs/jstree.min.js"></script>
+	  <script type="text/javascript" src="${CONTEXT_PATH}/resources/js/tree.js"></script>
 </head>
 <body>
-<form id="formUpdate" action="/upload" method="post" enctype="multipart/form-data" style="display: none">
+<form id="formUpdate" action="${CONTEXT_PATH}/upload" method="post" enctype="multipart/form-data" style="display: none">
 	<input type="hidden" name="directory" id="directory" />
 	<input type="file" name="file" id="file" style="display: none" /> 
 </form>

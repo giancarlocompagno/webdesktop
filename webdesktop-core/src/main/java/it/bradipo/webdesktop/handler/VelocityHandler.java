@@ -27,7 +27,7 @@ public abstract class VelocityHandler  implements HttpHandler{
 	}
 
 	public String template(String template, Map<String,?> map) {
-
+		
         /*  next, get the Template  */
         Template t = ve.getTemplate( "/vm/"+template );
         VelocityContext context = new VelocityContext();
@@ -42,6 +42,7 @@ public abstract class VelocityHandler  implements HttpHandler{
 	@Override
 	public void handle(IHttpRequest request,IHttpResponse response) throws IOException {
 		Map<String,Object> map = getMap(request);
+		map.put("CONTEXT_PATH", request.getContextPath());
 		String content = template(getTemplate(request), map);
 	    response.sendHTML(content);
 	}

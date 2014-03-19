@@ -24,11 +24,10 @@ public class HandlerManager {
 	private static Map<String,HttpHandler> map = new HashMap<String, HttpHandler>();
 
 	static{
-		map.put("/", new HomePageHandler());
 		map.put("/resources", new ResourceHandler());
 		map.put("/screen", new StreamMJPEGHandler());
 		map.put("/taskmanager.html", new TaskManagerPageHandler());
-		map.put("/tree.html", new TreePageHandler());
+		map.put("/pagetree.html", new TreePageHandler());
 		map.put("/shell.html", new ShellPageHandler());
 		map.put("/shelledit", new ShellEditHandler());
 		map.put("/command", new CommandHandler());
@@ -42,6 +41,11 @@ public class HandlerManager {
 	
 	public static Set<Entry<String,HttpHandler>> getHttpHandlers(){
 		return map.entrySet();
+	}
+	
+	
+	public static HttpHandler getDefault(){
+		return new HomePageHandler();
 	}
 	
 	

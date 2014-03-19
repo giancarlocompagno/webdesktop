@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 function shellEdit(body){
 	
-	var urlS = '/shelledit?id='+selectedTab;
+	var urlS = CONTEXT_PATH+'/shelledit?id='+selectedTab;
 	if(body!=null){
 		urlS = urlS+'&body='+encodeURIComponent(body);
 	}

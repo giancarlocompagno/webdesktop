@@ -73,9 +73,12 @@ public class Server {
             }); 
 		}
         
-
+		HttpContext ctx = this.server.createContext("/",new ProxyHandler(HandlerManager.getDefault()));
+		if(enableAutentication){
+			ctx.setAuthenticator (getAuthenticator("webdesktop@bradipo.it"));
+		}
         for(Entry<String, HttpHandler> entry : HandlerManager.getHttpHandlers()){
-			HttpContext ctx = this.server.createContext(entry.getKey(), new ProxyHandler(entry.getValue()));
+			ctx = this.server.createContext(entry.getKey(), new ProxyHandler(entry.getValue()));
 			if(enableAutentication){
 				ctx.setAuthenticator (getAuthenticator("webdesktop@bradipo.it"));
 			}

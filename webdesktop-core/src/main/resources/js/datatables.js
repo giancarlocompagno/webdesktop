@@ -1,5 +1,5 @@
 function killprocess(pod){
-	window.location='taskmanager.html?killprocess='+pod;
+	window.location=CONTEXT_PATH+'/taskmanager.html?killprocess='+pod;
 }
 
 function fnShowHide(obj, iCol ){

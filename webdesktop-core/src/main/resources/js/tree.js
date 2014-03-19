@@ -13,7 +13,7 @@ $(document).ready(function() {
 	        
 	    	'data' :{
 	            'url' : function (node){
-	            		return '/tree';
+	            		return CONTEXT_PATH+'/tree';
 	            	},
 	            'data' : function (node) {
 	                return { 'id' : node.id };
@@ -21,7 +21,7 @@ $(document).ready(function() {
 		     },
 		     "types" : {
 		    	    "#" : {"max_children" : 1,"max_depth" : 4,"valid_children" : ["root"]},
-		    	    "root" : {"icon" : "/resources/css/tree/hd.png","valid_children" : ["default"]},
+		    	    "root" : {"icon" : CONTEXT_PATH+"/resources/css/tree/hd.png","valid_children" : ["default"]},
 		    	    "default" : {"valid_children" : ["default","file"]},
 		    	    "file" : {"icon" : "glyphicon glyphicon-file","valid_children" : []}
 		    	  }
@@ -93,7 +93,7 @@ function deletefile() {
 	var id = encodeURIComponent(sel[0]);
 	if(confirm('sei sicuro di voler cancellare il file?')){
 		$.ajax({
-			url : '/deletefile?id='+id,
+			url : CONTEXT_PATH+'/deletefile?id='+id,
 			
 		})
 		.fail(function() {
@@ -109,7 +109,7 @@ function downloadnode() {
 	var ref = $('#jstree').jstree(true),
 		sel = ref.get_selected();
 	var id = encodeURIComponent(sel[0]);
-	window.open('/tree?id='+id);
+	window.open(CONTEXT_PATH+'/tree?id='+id);
 };
 
 function uploadnode() {

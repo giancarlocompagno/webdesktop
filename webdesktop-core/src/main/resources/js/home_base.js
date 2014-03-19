@@ -18,7 +18,7 @@ function playMJPEG(){
 	if(id == null){
 		id = setInterval(function() {
 			var random = Math.floor(Math.random() * Math.pow(2, 31));
-			$('img#screen').attr('src', '/screen?i='+Math.random());
+			$('img#screen').attr('src', CONTEXT_PATH+'/screen?i='+Math.random());
 			}, TIMEOUT);
 		$('#stop').removeClass('disabled');
 		$('#play').addClass('disabled');

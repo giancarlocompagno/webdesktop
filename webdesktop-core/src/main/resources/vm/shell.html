@@ -2,13 +2,16 @@
 <html>
 <head>
 <title>WebDesktop ${hostName}: Prompt/Shell</title>
-<link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css" />
-<link rel="stylesheet" href="/resources/css/bootstrap/bootstrap-theme.min.css" />
-<link rel="stylesheet" href="/resources/css/smoothness/jquery.ui.custom.min.css" />
-<script src="/resources/js/libs/jquery.min.js"></script>
-<script src="/resources/js/libs/jquery.ui.min.js"></script>
-<script src="/resources/js/libs/jquery.ui.touch.js"></script>
-<script src="/resources/js/shell.js"></script>
+<link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/bootstrap/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/smoothness/jquery.ui.custom.min.css" />
+<script>
+	var CONTEXT_PATH = '${CONTEXT_PATH}';
+</script>
+<script src="${CONTEXT_PATH}/resources/js/libs/jquery.min.js"></script>
+<script src="${CONTEXT_PATH}/resources/js/libs/jquery.ui.min.js"></script>
+<script src="${CONTEXT_PATH}/resources/js/libs/jquery.ui.touch.js"></script>
+<script src="${CONTEXT_PATH}/resources/js/shell.js"></script>
 <style>
 	.bodyshellcontent{
 	height: 300px;

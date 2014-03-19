@@ -26,7 +26,7 @@ public class TreeHandler implements HttpHandler {
 		String filename = request.getParametro("id");
 		boolean isRoot = false;
 		 
-		if(filename.equals("#")){
+		if(filename==null || filename.equals("#")){
 			fs  = File.listRoots();
 			isRoot = true;
 		}else{
@@ -37,7 +37,7 @@ public class TreeHandler implements HttpHandler {
 				
 			}
 		}
-
+		String CONTEXT_PATH = request.getContextPath();
 		StringBuilder s = new StringBuilder();
 		if(fs!=null){
 			s.append("<ul>\n");
@@ -47,13 +47,13 @@ public class TreeHandler implements HttpHandler {
 				String datajstree = null;
 				if(isRoot && f.isDirectory()){
 					s.append("class=\"jstree-closed\" ");
-					datajstree = "\"icon\":\"/resources/css/tree/hd.png\"";
+					datajstree = "\"icon\":\""+CONTEXT_PATH+"/resources/css/tree/hd.png\"";
 				}else if(isRoot){
-					datajstree = "\"icon\":\"/resources/css/tree/hd.png\",\"disabled\":true ";
+					datajstree = "\"icon\":\""+CONTEXT_PATH+"/resources/css/tree/hd.png\",\"disabled\":true ";
 				}else if(f.isDirectory()){
 					s.append("class=\"jstree-closed\" ");
 				}else{
-					datajstree = "\"icon\":\"/resources/css/tree/file.png\"";
+					datajstree = "\"icon\":\""+CONTEXT_PATH+"/resources/css/tree/file.png\"";
 				}
 				if(datajstree!=null){
 					s.append(" data-jstree='{"+datajstree+"}' ");	

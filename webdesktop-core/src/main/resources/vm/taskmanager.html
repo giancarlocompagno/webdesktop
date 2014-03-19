@@ -2,16 +2,19 @@
 <html>
 	<head>
 		<title>WebDesktop ${hostName}: Task Manager</title>
-		<link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css" />
-	    <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap-theme.min.css" />
-	    <link rel="stylesheet" href="/resources/css/smoothness/jquery.ui.custom.min.css" />
-	    <link rel="stylesheet" href="/resources/css/datatable/jquery.dataTables_themeroller.css" />
-	    <link rel="stylesheet" href="/resources/css/datatable/jquery.dataTables.css" />
-	    <script src="/resources/js/libs/jquery.min.js"></script>
-	    <script src="/resources/js/libs/jquery.ui.min.js"></script>
-	    <script src="/resources/js/libs/bootstrap.min.js"></script>
-	    <script src="/resources/js/libs/jquery.dataTables.min.js"></script>
-	    <script src="/resources/js/datatables.js"></script>
+		<link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/bootstrap/bootstrap.min.css" />
+	    <link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/bootstrap/bootstrap-theme.min.css" />
+	    <link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/smoothness/jquery.ui.custom.min.css" />
+	    <link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/datatable/jquery.dataTables_themeroller.css" />
+	    <link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/datatable/jquery.dataTables.css" />
+	    <script>
+			var CONTEXT_PATH = '${CONTEXT_PATH}';
+		</script>
+	    <script src="${CONTEXT_PATH}/resources/js/libs/jquery.min.js"></script>
+	    <script src="${CONTEXT_PATH}/resources/js/libs/jquery.ui.min.js"></script>
+	    <script src="${CONTEXT_PATH}/resources/js/libs/bootstrap.min.js"></script>
+	    <script src="${CONTEXT_PATH}/resources/js/libs/jquery.dataTables.min.js"></script>
+	    <script src="${CONTEXT_PATH}/resources/js/datatables.js"></script>
 	    
 	</head>
 	<body>

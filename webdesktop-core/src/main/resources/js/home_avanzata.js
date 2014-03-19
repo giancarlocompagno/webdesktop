@@ -1,16 +1,16 @@
 var url = null;
 function opengestionefolder(){
-	url = '/tree.html';
+	url = CONTEXT_PATH+'/pagetree.html';
 	$('#dialog').dialog('open');
 }
 
 function openshellprompt(){
-	url = '/shell.html';
+	url = CONTEXT_PATH+'/shell.html';
 	$('#dialog').dialog('open');
 }
 
 function opentaskmanager(){
-	url = '/taskmanager.html';
+	url = CONTEXT_PATH+'/taskmanager.html';
 	$('#dialog').dialog('open');
 }
 
@@ -37,7 +37,7 @@ function playCommand(){
 			var commandToSend = getCommands();
 			if(commandToSend!=''){
 				$.ajax({
-					url : './command?command='+commandToSend,
+					url : CONTEXT_PATH+'/command?command='+commandToSend,
 				});
 			}
 			

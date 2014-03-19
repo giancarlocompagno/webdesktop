@@ -2,11 +2,14 @@
 <html>
 	<head>
 		<title>WebDesktop: ${hostName}</title>
-		<link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.min.css" />
-	    <link rel="stylesheet" href="/resources/css/bootstrap/bootstrap-theme.min.css" />
-	    <link rel="stylesheet" href="/resources/css/tree/style.min.css" />
-	    <link rel="stylesheet" href="/resources/css/smoothness/jquery.ui.custom.min.css" />
+		<link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/bootstrap/bootstrap.min.css" />
+	    <link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/bootstrap/bootstrap-theme.min.css" />
+	    <link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/tree/style.min.css" />
+	    <link rel="stylesheet" href="${CONTEXT_PATH}/resources/css/smoothness/jquery.ui.custom.min.css" />
 	    <script>
+	    
+	    	var CONTEXT_PATH = '${CONTEXT_PATH}'; 
+	    
 	    	var keydownup ={};
 	    
 	    	${extenalScript}
@@ -23,11 +26,11 @@
 	    	}
 	    	
 	    </script>
-	    <script src="/resources/js/libs/jquery.min.js"></script>
-	    <script src="/resources/js/libs/jquery.ui.min.js"></script>
-	    <script src="/resources/js/libs/bootstrap.min.js"></script>
-	    <script src="/resources/js/home_base.js"></script>
-    	<script src="/resources/js/home_avanzata.js"></script>
+	    <script src="${CONTEXT_PATH}/resources/js/libs/jquery.min.js"></script>
+	    <script src="${CONTEXT_PATH}/resources/js/libs/jquery.ui.min.js"></script>
+	    <script src="${CONTEXT_PATH}/resources/js/libs/bootstrap.min.js"></script>
+	    <script src="${CONTEXT_PATH}/resources/js/home_base.js"></script>
+    	<script src="${CONTEXT_PATH}/resources/js/home_avanzata.js"></script>
 	</head>
 	<body>
 		<div class="row page" id="page">
@@ -44,7 +47,7 @@
 					</div>
 				</div>
 				<div id="body_screen" class="row">
-					<img id="screen" src="/screen" />
+					<img id="screen" src="${CONTEXT_PATH}/screen" />
 				</div>
 				<div class="row">
 					<div id="dialog" style="overflow: hidden;">

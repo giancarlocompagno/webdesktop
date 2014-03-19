@@ -25,7 +25,7 @@ public class HttpRequestHeader implements IHttpHeaderRequest{
 				String value = en.nextElement();
 				values.add(value);
 			}
-			maps.put(key, values);
+			maps.put(key.toLowerCase(), values);
 		}
 	}
 
@@ -36,8 +36,8 @@ public class HttpRequestHeader implements IHttpHeaderRequest{
 
 	@Override
 	public String getFirst(String content) {
-		List<String> l = get(content);
-		return l!=null && l.isEmpty()?null:l.get(0);
+		List<String> l = get(content.toLowerCase());
+		return l!=null && !l.isEmpty()?l.get(0):null;
 	}
 
 	@Override

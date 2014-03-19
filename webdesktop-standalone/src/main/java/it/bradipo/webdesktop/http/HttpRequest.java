@@ -89,4 +89,8 @@ public class HttpRequest implements IHttpRequest{
 		return exchange.getRequestBody();
 	}
 
+	@Override
+	public String getContextPath() {
+		return "";
+	}
 }
