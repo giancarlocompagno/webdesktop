@@ -1,11 +1,10 @@
 package it.bradipo.webdesktop.handler.so.windows;
 
-import java.io.IOException;
-
 import it.bradipo.webdesktop.handler.shell.StringShell;
 import it.bradipo.webdesktop.handler.so.Factory;
-import it.bradipo.webdesktop.handler.task.Task;
 import it.bradipo.webdesktop.handler.task.TaskManager;
+
+import java.io.IOException;
 
 public class WindowsFactory implements Factory{
 

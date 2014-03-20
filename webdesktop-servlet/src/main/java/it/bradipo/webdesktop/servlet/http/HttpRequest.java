@@ -1,5 +1,8 @@
 package it.bradipo.webdesktop.servlet.http;
 
+import it.bradipo.webdesktop.http.IHttpHeaderRequest;
+import it.bradipo.webdesktop.http.IHttpRequest;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -9,9 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
-import it.bradipo.webdesktop.http.IHttpHeaderRequest;
-import it.bradipo.webdesktop.http.IHttpRequest;
 
 public class HttpRequest implements IHttpRequest{
 	

@@ -27,8 +27,14 @@ $(document).ready(function() {
 	$( "#tabs" ).tabs({ 
 		active: 0,
 			beforeActivate: function( event, ui ) {
-				selectedTab = $(ui.newTab.find("a")).attr("index");
-				var old = $(ui.oldTab.find("a")).attr("index");
+				var isShell = $(ui.newTab.find("a")).attr("shell");
+				if(isShell){
+					selectedTab = $(ui.newTab.find("a")).attr("index");
+					var old = $(ui.oldTab.find("a")).attr("index");
+					$('#command-line').show();
+				}else{
+					$('#command-line').hide();
+				}
 			}
 		});
 });

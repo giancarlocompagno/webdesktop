@@ -1,10 +1,10 @@
 package it.bradipo.webdesktop.servlet;
 
+import it.bradipo.webdesktop.servlet.handler.ProxyHandler;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import it.bradipo.webdesktop.servlet.handler.ProxyHandler;
 
 public class Registry {
 	
@@ -19,7 +19,7 @@ public class Registry {
 
 	public ProxyHandler get(String uri) {
 		for(Entry<String, ProxyHandler> e : map.entrySet()){
-			if(uri.startsWith(e.getKey())){
+			if(uri.equals(e.getKey())||uri.startsWith(e.getKey()+"/")){
 				return e.getValue();
 			}
 		}

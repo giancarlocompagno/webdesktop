@@ -6,8 +6,6 @@ import java.awt.Robot;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
-import com.sun.net.httpserver.HttpExchange;
-
 public class KeyPressCommand extends AbstractCommand {
 	
 	public enum KEYTYPE{KEYPRESS,KEYDOWN,KEYUP};

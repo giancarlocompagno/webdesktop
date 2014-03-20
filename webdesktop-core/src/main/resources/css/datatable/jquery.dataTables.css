@@ -219,3 +219,11 @@ table.dataTable thead td:active {
 	-webkit-overflow-scrolling: touch;
 }
 
+table.display td {
+    padding: 3px 10px;
+}
+td.details {
+    background-color: #D1CFD0;
+    border: 2px solid #A19B9E;
+}
+

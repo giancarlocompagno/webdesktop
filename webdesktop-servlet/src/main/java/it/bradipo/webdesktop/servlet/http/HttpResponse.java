@@ -1,14 +1,14 @@
 package it.bradipo.webdesktop.servlet.http;
 
+import it.bradipo.webdesktop.handler.util.Util;
+import it.bradipo.webdesktop.http.AbstractHttpResponse;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletResponse;
-
-import it.bradipo.webdesktop.handler.util.Util;
-import it.bradipo.webdesktop.http.AbstractHttpResponse;
 
 public class HttpResponse extends AbstractHttpResponse{
 	

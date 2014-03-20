@@ -1,5 +1,7 @@
 package it.bradipo.webdesktop.servlet.http;
 
+import it.bradipo.webdesktop.http.IHttpHeaderRequest;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
@@ -8,8 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
-import it.bradipo.webdesktop.http.IHttpHeaderRequest;
 
 public class HttpRequestHeader implements IHttpHeaderRequest{
 	

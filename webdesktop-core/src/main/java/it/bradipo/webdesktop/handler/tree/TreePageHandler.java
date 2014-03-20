@@ -1,12 +1,11 @@
 package it.bradipo.webdesktop.handler.tree;
 
-import java.util.HashMap;
-import java.util.Map;
-
-
 import it.bradipo.webdesktop.ServerData;
 import it.bradipo.webdesktop.handler.VelocityHandler;
 import it.bradipo.webdesktop.http.IHttpRequest;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class TreePageHandler extends VelocityHandler {
 

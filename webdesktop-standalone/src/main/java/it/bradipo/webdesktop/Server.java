@@ -7,9 +7,7 @@ import it.bradipo.webdesktop.handler.util.Util;
 
 import java.io.InputStream;
 import java.net.InetSocketAddress;
-import java.net.PasswordAuthentication;
 import java.security.KeyStore;
-import java.security.NoSuchAlgorithmException;
 import java.util.Map.Entry;
 
 import javax.net.ssl.KeyManagerFactory;
@@ -18,14 +16,14 @@ import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLParameters;
 import javax.net.ssl.TrustManagerFactory;
 
+import com.sun.net.httpserver.Authenticator;
+import com.sun.net.httpserver.BasicAuthenticator;
 import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpsConfigurator;
+import com.sun.net.httpserver.HttpsParameters;
 import com.sun.net.httpserver.HttpsServer;
 import com.sun.net.httpserver.spi.HttpServerProvider;
-import com.sun.net.httpserver.HttpsParameters; 
-import com.sun.net.httpserver.BasicAuthenticator;
-import com.sun.net.httpserver.Authenticator;
 
 public class Server {
 	

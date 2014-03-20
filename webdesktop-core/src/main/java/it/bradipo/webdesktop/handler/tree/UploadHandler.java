@@ -1,5 +1,6 @@
 package it.bradipo.webdesktop.handler.tree;
 
+import static it.bradipo.webdesktop.handler.util.Util.writeResources;
 import it.bradipo.webdesktop.http.IHttpHeaderRequest;
 import it.bradipo.webdesktop.http.IHttpRequest;
 import it.bradipo.webdesktop.http.IHttpResponse;
@@ -15,8 +16,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
-
-import static it.bradipo.webdesktop.handler.util.Util.*;
 
 public class UploadHandler extends TreePageHandler{
 

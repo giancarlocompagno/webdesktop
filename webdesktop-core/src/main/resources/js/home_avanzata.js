@@ -1,6 +1,6 @@
 var url = null;
 function opengestionefolder(){
-	url = CONTEXT_PATH+'/pagetree.html';
+	url = CONTEXT_PATH+'/tree.html';
 	$('#dialog').dialog('open');
 }
 

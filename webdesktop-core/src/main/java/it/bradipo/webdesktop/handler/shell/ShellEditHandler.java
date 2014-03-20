@@ -1,18 +1,13 @@
 package it.bradipo.webdesktop.handler.shell;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-
-
-
-
-import it.bradipo.webdesktop.ServerData;
 import it.bradipo.webdesktop.handler.HttpHandler;
 import it.bradipo.webdesktop.handler.so.SOFactory;
 import it.bradipo.webdesktop.http.IHttpRequest;
 import it.bradipo.webdesktop.http.IHttpResponse;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShellEditHandler implements HttpHandler{
 	

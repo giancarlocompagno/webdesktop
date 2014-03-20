@@ -1,12 +1,10 @@
 package it.bradipo.webdesktop.handler;
 
-import it.bradipo.webdesktop.ServerData;
+import static it.bradipo.webdesktop.handler.util.Util.loadResource;
 import it.bradipo.webdesktop.http.IHttpRequest;
 import it.bradipo.webdesktop.http.IHttpResponse;
 
 import java.io.IOException;
-
-import static it.bradipo.webdesktop.handler.util.Util.*;
 
 public class ResourceHandler implements HttpHandler {
 	

@@ -27,7 +27,7 @@ public class HandlerManager {
 		map.put("/resources", new ResourceHandler());
 		map.put("/screen", new StreamMJPEGHandler());
 		map.put("/taskmanager.html", new TaskManagerPageHandler());
-		map.put("/pagetree.html", new TreePageHandler());
+		map.put("/tree.html", new TreePageHandler());
 		map.put("/shell.html", new ShellPageHandler());
 		map.put("/shelledit", new ShellEditHandler());
 		map.put("/command", new CommandHandler());

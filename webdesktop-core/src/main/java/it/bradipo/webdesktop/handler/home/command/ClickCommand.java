@@ -5,8 +5,6 @@ import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
-import com.sun.net.httpserver.HttpExchange;
-
 public class ClickCommand extends AbstractCommand {
 	
 	public enum CLICKTYPE{MOUSEUP,MOUSEDOWN,RIGHTCLICK};

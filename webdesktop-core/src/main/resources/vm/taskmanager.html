@@ -14,10 +14,11 @@
 	    <script src="${CONTEXT_PATH}/resources/js/libs/jquery.ui.min.js"></script>
 	    <script src="${CONTEXT_PATH}/resources/js/libs/bootstrap.min.js"></script>
 	    <script src="${CONTEXT_PATH}/resources/js/libs/jquery.dataTables.min.js"></script>
-	    <script src="${CONTEXT_PATH}/resources/js/datatables.js"></script>
+	    <script src="${CONTEXT_PATH}/resources/js/taskmanager.js"></script>
 	    
 	</head>
-	<body>
+	<body>	
+			<!-- 
 			<div class="row page" id="demo">
 				<table>
 						<tr>
@@ -32,6 +33,7 @@
 						</tr>
 				</table>
 			</div>
+			 -->
 			<table id="taskmanager">
 				<thead>
 					<tr>
@@ -52,7 +54,7 @@
 					</td>
 					#end
 					<td>
-						<button id="deletefile" type="button" class="btn btn-danger btn-sm" onclick="killprocess('${task.getPID()}');"><i class="glyphicon glyphicon-remove"></i>Kill Process ${task.getPID()}</button>
+						<button id="deletefile" type="button" class="btn btn-danger btn-sm" onclick="killprocess('/taskmanager.html','${task.getPID()}');"><i class="glyphicon glyphicon-remove"></i>Kill Process ${task.getPID()}</button>
 					</td>
 				</tr>
 				#end

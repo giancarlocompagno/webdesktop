@@ -1,13 +1,13 @@
 package it.bradipo.webdesktop.servlet.handler;
 
+import it.bradipo.webdesktop.handler.HttpHandler;
+import it.bradipo.webdesktop.servlet.http.HttpRequest;
+import it.bradipo.webdesktop.servlet.http.HttpResponse;
+
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import it.bradipo.webdesktop.handler.HttpHandler;
-import it.bradipo.webdesktop.servlet.http.HttpRequest;
-import it.bradipo.webdesktop.servlet.http.HttpResponse;
 
 public class ProxyHandler{
 	

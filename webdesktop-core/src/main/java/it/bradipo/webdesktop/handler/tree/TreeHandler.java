@@ -7,8 +7,6 @@ import it.bradipo.webdesktop.http.IHttpResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-
-
 import java.util.HashMap;
 
 public class TreeHandler implements HttpHandler {

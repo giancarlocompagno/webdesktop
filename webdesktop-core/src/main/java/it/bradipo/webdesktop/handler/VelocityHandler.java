@@ -3,7 +3,6 @@ package it.bradipo.webdesktop.handler;
 import it.bradipo.webdesktop.http.IHttpRequest;
 import it.bradipo.webdesktop.http.IHttpResponse;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Map;
