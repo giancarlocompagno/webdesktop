@@ -19,8 +19,8 @@ public class ClickCommand extends AbstractCommand {
 
 	public void handle(String value) {
 		int comma = value.indexOf(',');
-        int x = Integer.parseInt(value.substring(0, comma));
-        int y = Integer.parseInt(value.substring(comma + 1));
+        int x = value(value.substring(0, comma));
+        int y = value(value.substring(comma + 1));
         getRobot().mouseMove(x, y);
         switch (type) {
 		case MOUSEDOWN:
@@ -36,5 +36,15 @@ public class ClickCommand extends AbstractCommand {
         }
         
 	}
+
+	
+	private static int value(String s){
+		if(s.indexOf(".")>=0){
+			s = s.substring(0,s.indexOf("."));
+		}
+		return Integer.parseInt(s);
+	}
+	
+	
 
 }
