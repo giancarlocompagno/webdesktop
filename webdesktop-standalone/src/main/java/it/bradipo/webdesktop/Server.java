@@ -2,8 +2,8 @@ package it.bradipo.webdesktop;
 
 import it.bradipo.webdesktop.handler.HttpHandler;
 import it.bradipo.webdesktop.handler.ProxyHandler;
-import it.bradipo.webdesktop.handler.util.HandlerManager;
-import it.bradipo.webdesktop.handler.util.Util;
+import it.bradipo.webdesktop.util.HandlerManager;
+import it.bradipo.webdesktop.util.Util;
 
 import java.io.InputStream;
 import java.net.InetSocketAddress;

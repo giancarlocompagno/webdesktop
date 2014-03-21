@@ -1,8 +1,8 @@
 package it.bradipo.webdesktop.servlet;
 
 import it.bradipo.webdesktop.handler.HttpHandler;
-import it.bradipo.webdesktop.handler.util.HandlerManager;
 import it.bradipo.webdesktop.servlet.handler.ProxyHandler;
+import it.bradipo.webdesktop.util.HandlerManager;
 
 import java.io.IOException;
 import java.util.Map.Entry;

@@ -1,6 +1,6 @@
 package it.bradipo.webdesktop.http;
 
-import it.bradipo.webdesktop.handler.util.Util;
+import it.bradipo.webdesktop.util.Util;
 
 import java.io.IOException;
 import java.io.InputStream;

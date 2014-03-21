@@ -1,6 +1,6 @@
 package it.bradipo.webdesktop.handler;
 
-import static it.bradipo.webdesktop.handler.util.Util.loadResource;
+import static it.bradipo.webdesktop.util.Util.loadResource;
 import it.bradipo.webdesktop.http.IHttpRequest;
 import it.bradipo.webdesktop.http.IHttpResponse;
 
