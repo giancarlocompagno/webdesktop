@@ -74,34 +74,27 @@ public class TreeHandler implements HttpHandler {
 		}
 	}
 	
-	private static int i = 0;
-	
 	public static String convert(File f) throws IOException{
 		return f.toString();
 	}
-
 	
-	public String dimension(File f){
+	public static String dimension(File f){
 		StringBuilder size = new StringBuilder();
 		if(f.isFile()){
 			size.append( "(" );
-		if(f.length()>=1024*1204*1024){
-			String s = String.format("%.2g%n", (f.length()/(double)(1024*1024*1024)));
-			size.append(s +" GB");
-		}else if(f.length()>1024*1024){
-			String s = String.format("%.2g%n", (f.length()/(double)(1024*1024)));
-			size.append(s +" MB");
-		}else if(f.length()>=1024){
-			String s = String.format("%.2g%n", (f.length()/(double)(1024)));
-			size.append(s +" KB");
-		}else {
-			size.append(f.length() +" B");
-		}
-		size.append( ")");
+			if(f.length()>=1024*1024*1024){
+				size.append(""+Math.round((double)(f.length()/(double)(1024*1024*1024)))+" GB");
+			}if(f.length()>=1024*1024){
+				size.append(""+Math.round((double)(f.length()/(double)(1024*1024)))+" MB");
+			}else if(f.length()>=1024){
+				size.append(""+Math.round((double)(f.length()/(double)(1024)))+" KB");
+			}else {
+				size.append(f.length() +" B");
+			}
+			size.append( ")"); 
 		}
 		return size.toString();
 	}
-	
 	
 	
 	

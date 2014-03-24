@@ -68,42 +68,6 @@ $(document).ready(function() {
 	
 });
 
-function createfolder() {
-	var ref = $('#jstree').jstree(true),
-		sel = ref.get_selected();
-	if(!sel.length) { return false; }
-	sel = sel[0];
-	sel = ref.create_node(sel, {"type":"file"});
-	if(sel) {
-		ref.edit(sel);
-	}
-};
-function renamefile() {
-	var ref = $('#jstree').jstree(true),
-		sel = ref.get_selected();
-	if(!sel.length) { return false; }
-	sel = sel[0];
-	ref.edit(sel);
-};
-
-function deletefile() {
-	var ref = $('#jstree').jstree(true),
-		sel = ref.get_selected();
-	if(!sel.length) { return false; }
-	var id = encodeURIComponent(sel[0]);
-	if(confirm('sei sicuro di voler cancellare il file?')){
-		$.ajax({
-			url : CONTEXT_PATH+'/deletefile?id='+id,
-			
-		})
-		.fail(function() {
-			alert( "impossibile cancellare il file" );
-		})
-		.success(function() {
-			ref.delete_node(sel);
-		});	
-	}
-};
 
 function downloadnode() {
 	var ref = $('#jstree').jstree(true),
