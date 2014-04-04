@@ -53,6 +53,7 @@ import javax.swing.JTextField;
 public class ServerGUI extends JPanel{
     protected JButton start,stop;
     protected JTextField field;
+    protected JTextField portDatagram;
     protected JLabel label;
     
     protected Server server;
@@ -68,6 +69,19 @@ public class ServerGUI extends JPanel{
         field.setHorizontalAlignment(JTextField.RIGHT);
         field.setBorder(BorderFactory.createTitledBorder("Inserisci la porta"));
         field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if  (! (c>='0' && c <='9') || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+                	getToolkit().beep();
+                	e.consume();
+                }
+            }
+        });
+        
+        portDatagram = new JTextField("-1",10);
+        portDatagram.setHorizontalAlignment(JTextField.RIGHT);
+        portDatagram.setBorder(BorderFactory.createTitledBorder("Inserisci la porta datagram"));
+        portDatagram.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
                 if  (! (c>='0' && c <='9') || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
@@ -99,9 +113,10 @@ public class ServerGUI extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					int port = Integer.parseInt(field.getText());
+					int portDatagramInt = Integer.parseInt(portDatagram.getText());
 					boolean enableHttpsB = enableHttps.isSelected();
 					boolean enableAuthenticationB = enableAuthentication.isSelected();
-					server = new Server(port,enableHttpsB,enableAuthenticationB);
+					server = new Server(port,enableAuthenticationB,enableHttpsB,portDatagramInt);
 					server.start();
 					label.setText("Status: avviato");
 				} catch (Exception e1) {
@@ -128,6 +143,7 @@ public class ServerGUI extends JPanel{
 
         //Add Components to this container, using the default FlowLayout.
         add(field);
+        add(portDatagram);
         add(enableHttps);
         add(enableAuthentication);
         add(start);

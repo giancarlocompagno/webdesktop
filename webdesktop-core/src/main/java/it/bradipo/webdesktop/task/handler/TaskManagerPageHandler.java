@@ -1,6 +1,6 @@
 package it.bradipo.webdesktop.task.handler;
 
-import it.bradipo.webdesktop.ServerData;
+import it.bradipo.webdesktop.Screen;
 import it.bradipo.webdesktop.handler.VelocityHandler;
 import it.bradipo.webdesktop.http.IHttpRequest;
 import it.bradipo.webdesktop.http.IHttpResponse;
@@ -28,7 +28,6 @@ public class TaskManagerPageHandler extends VelocityHandler {
 	@Override
 	protected Map<String, Object> getMap(IHttpRequest request) {
 		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("hostName",ServerData.getInstance().getHostName());
 		map.put("tasks",taskManager.getTasks());
 		map.put("keys",taskManager.getKeys());
 		return map;

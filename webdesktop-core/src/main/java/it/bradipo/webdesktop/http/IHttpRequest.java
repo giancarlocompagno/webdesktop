@@ -23,5 +23,7 @@ public interface IHttpRequest {
 	public IHttpHeaderRequest getHttpHeaderRequest();
 
 	public String getContextPath();
-
+	
+	public String getUsername();
+	
 }

@@ -92,4 +92,9 @@ public class HttpRequest implements IHttpRequest{
 	public String getContextPath() {
 		return "";
 	}
+
+	@Override
+	public String getUsername() {
+		return exchange.getPrincipal()!=null?exchange.getPrincipal().getUsername():null;
+	}
 }

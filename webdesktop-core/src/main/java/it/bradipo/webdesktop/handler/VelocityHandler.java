@@ -1,10 +1,14 @@
 package it.bradipo.webdesktop.handler;
 
+import it.bradipo.webdesktop.Screen;
 import it.bradipo.webdesktop.http.IHttpRequest;
 import it.bradipo.webdesktop.http.IHttpResponse;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.velocity.Template;
@@ -14,6 +18,17 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 public abstract class VelocityHandler  implements HttpHandler{
+	
+	
+	private static String hostName;
+	
+	static{
+		try {
+			hostName = InetAddress.getLocalHost().getHostName();
+		} catch (UnknownHostException e) {
+			throw new RuntimeException(e);
+		}
+	}
 		
 	VelocityEngine ve = new VelocityEngine();
 	
@@ -41,6 +56,7 @@ public abstract class VelocityHandler  implements HttpHandler{
 	@Override
 	public void handle(IHttpRequest request,IHttpResponse response) throws IOException {
 		Map<String,Object> map = getMap(request);
+		map.put("hostName",hostName);
 		map.put("CONTEXT_PATH", request.getContextPath());
 		String content = template(getTemplate(request), map);
 	    response.sendHTML(content);
@@ -48,7 +64,9 @@ public abstract class VelocityHandler  implements HttpHandler{
 
 	protected abstract String getTemplate(IHttpRequest request) ;
 
-	protected abstract Map<String, Object> getMap(IHttpRequest request);
+	protected Map<String, Object> getMap(IHttpRequest request) {
+		return new HashMap<String, Object>();
+	}
 	
 	
 

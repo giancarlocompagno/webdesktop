@@ -96,4 +96,10 @@ public class HttpRequest implements IHttpRequest{
 		return request.getContextPath();
 	}
 
+
+	@Override
+	public String getUsername() {
+		return request.getRemoteUser();
+	}
+
 }

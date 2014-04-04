@@ -1,13 +1,29 @@
-package it.bradipo.webdesktop.util;
+package it.bradipo.webdesktop;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CaratteriSpeciali {
+import javax.imageio.ImageIO;
+
+public class Screen {
 	
-	private static Map<Integer,Integer> keydownup = new HashMap<Integer, Integer>();
+
+	
+	
+private static Map<Integer,Integer> keydownup = new HashMap<Integer, Integer>();
 	
 	private static Map<Integer,Integer> keypress = new HashMap<Integer, Integer>();
 	static{
@@ -120,11 +136,11 @@ public class CaratteriSpeciali {
 	}
 	
 	
-	public static Integer keypressJavaCode(int javascriptKeyCode){
+	public static Integer keyJavaCode(int javascriptKeyCode){
 		return keypress.get(javascriptKeyCode);
 	}
 	
-	public static Integer keydownupJavaCode(int javascriptKeyCode){
+	public static Integer keyDownUpJavaCode(int javascriptKeyCode){
 		return keydownup.get(javascriptKeyCode);
 	}
 	
@@ -132,8 +148,101 @@ public class CaratteriSpeciali {
 		return keypress.keySet();
 	}
 	
-	public static Collection<Integer> keydownupJavaKeyCodes(){
+	public static Collection<Integer> keyDownUpJavaKeyCodes(){
 		return keydownup.values();
 	}
 
+	
+	
+	
+	private static Rectangle screenRect;
+	private static Robot robot;
+	
+	public static final String IMAGE_CODEC = "jpeg";
+	
+	
+	private Screen() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	static{
+		try{
+			robot = new Robot();
+			screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+		}catch(Exception e){
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
+	public static void key(int keycode){
+		robot.keyPress(keycode);
+		robot.keyRelease(keycode);
+	}
+	
+	public static void keyUp(int keycode){
+		robot.keyRelease(keycode);
+	}
+	
+	public static void keyDown(int keycode){
+		robot.keyPress(keycode);
+	}
+	
+	public static void mouseMove(int x,int y){
+		robot.mouseMove(x, y);
+	}
+
+	public static void rightClick(){
+		robot.keyPress(KeyEvent.VK_CONTEXT_MENU);
+		robot.keyRelease(KeyEvent.VK_CONTEXT_MENU);
+	}
+	
+	public static void mouseDown(){
+		robot.mousePress(InputEvent.BUTTON1_MASK);
+	}
+	
+	public static void mouseUp(){
+		robot.mouseRelease(InputEvent.BUTTON1_MASK);
+	}
+	
+	
+	public static byte[] getScreen() throws IOException{
+		BufferedImage im = robot.createScreenCapture(screenRect);
+        ByteArrayOutputStream output = new ByteArrayOutputStream(500000);
+        ImageIO.write(im, IMAGE_CODEC, output);
+        byte[] img = output.toByteArray();
+        return img;
+	}
+	
+	public static byte[][] getScreen(int rows,int cols) throws IOException{
+		BufferedImage image = robot.createScreenCapture(screenRect);
+		int chunks = rows * cols;  
+		int chunkWidth = image.getWidth() / cols; // determines the chunk width and height  
+		int chunkHeight = image.getHeight() / rows;  
+		int count = 0;  
+		BufferedImage imgs[] = new BufferedImage[chunks]; //Image array to hold image chunks  
+		for (int x = 0; x < rows; x++) {  
+			for (int y = 0; y < cols; y++) {  
+				//Initialize the image array with image chunks  
+				imgs[count] = new BufferedImage(chunkWidth, chunkHeight, image.getType());  
+
+				// draws the image chunk  
+				Graphics2D gr = imgs[count++].createGraphics();  
+				gr.drawImage(image, 0, 0, chunkWidth, chunkHeight, chunkWidth * y, chunkHeight * x, chunkWidth * y + chunkWidth, chunkHeight * x + chunkHeight, null);  
+				gr.dispose();  
+			}  
+		}  
+		
+		byte[][] ret = new byte[chunks][];
+		
+		for (int i = 0; i < imgs.length; i++) {  
+			ByteArrayOutputStream output = new ByteArrayOutputStream(500000);
+		    ImageIO.write(imgs[i], IMAGE_CODEC, output);
+		    ret[i] = output.toByteArray();  
+		}
+		return ret;
+	}
+
+	
+	
 }

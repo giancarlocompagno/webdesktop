@@ -1,6 +1,6 @@
 package it.bradipo.webdesktop.home.handler;
 
-import it.bradipo.webdesktop.ServerData;
+import it.bradipo.webdesktop.Screen;
 import it.bradipo.webdesktop.handler.HttpHandler;
 import it.bradipo.webdesktop.home.command.ClickCommand;
 import it.bradipo.webdesktop.home.command.KeyPressCommand;
@@ -9,7 +9,6 @@ import it.bradipo.webdesktop.home.command.KeyPressCommand.KEYTYPE;
 import it.bradipo.webdesktop.http.IHttpRequest;
 import it.bradipo.webdesktop.http.IHttpResponse;
 
-import java.awt.Robot;
 import java.io.IOException;
 
 
@@ -24,13 +23,12 @@ public class CommandHandler implements HttpHandler {
 	
 	
 	public CommandHandler(){
-		Robot robot = ServerData.getInstance().getRobot();
-		kp=new KeyPressCommand( robot,KEYTYPE.KEYPRESS);
-		ku=new KeyPressCommand( robot, KEYTYPE.KEYUP);
-		kd=new KeyPressCommand(robot, KEYTYPE.KEYDOWN);
-		md=new ClickCommand( robot, CLICKTYPE.MOUSEDOWN);
-		mu=new ClickCommand( robot, CLICKTYPE.MOUSEUP);
-		rc=new ClickCommand(robot, CLICKTYPE.RIGHTCLICK);
+		kp=new KeyPressCommand(KEYTYPE.KEYPRESS);
+		ku=new KeyPressCommand(KEYTYPE.KEYUP);
+		kd=new KeyPressCommand(KEYTYPE.KEYDOWN);
+		md=new ClickCommand(CLICKTYPE.MOUSEDOWN);
+		mu=new ClickCommand(CLICKTYPE.MOUSEUP);
+		rc=new ClickCommand(CLICKTYPE.RIGHTCLICK);
 		
 	}
 

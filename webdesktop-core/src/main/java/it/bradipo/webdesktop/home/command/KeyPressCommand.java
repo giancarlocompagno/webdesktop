@@ -1,19 +1,16 @@
 package it.bradipo.webdesktop.home.command;
 
-import it.bradipo.webdesktop.util.CaratteriSpeciali;
+import it.bradipo.webdesktop.Screen;
 
-import java.awt.Robot;
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
-public class KeyPressCommand extends AbstractCommand {
+public class KeyPressCommand implements ICommand {
 	
 	public enum KEYTYPE{KEYPRESS,KEYDOWN,KEYUP};
 	
 	private KEYTYPE keytype;
 
-	public KeyPressCommand(Robot robot,KEYTYPE keytype) {
-		super(robot);
+	public KeyPressCommand(KEYTYPE keytype) {
 		this.keytype=keytype;
 	}
 
@@ -26,23 +23,19 @@ public class KeyPressCommand extends AbstractCommand {
         sendOK(exchange);
 	}*/
 
-	public void handle(String value) throws UnsupportedEncodingException {
+	public void handle(String value) throws Exception {
 		String javascriptKeyCodeS = URLDecoder.decode(value,"ISO-8859-1");
         Integer javascriptKeyCode = new Integer(javascriptKeyCodeS);
         Integer javaKeyCode = null;
         switch (keytype) {
 		case KEYPRESS:
-			javaKeyCode = CaratteriSpeciali.keypressJavaCode(javascriptKeyCode);
-			getRobot().keyPress(javaKeyCode);
-			getRobot().keyRelease(javaKeyCode);
+			Screen.key(Screen.keyJavaCode(javascriptKeyCode));
 			break;
 		case KEYDOWN:
-			javaKeyCode = CaratteriSpeciali.keydownupJavaCode(javascriptKeyCode);
-			getRobot().keyPress(javaKeyCode);
+			Screen.keyDown(Screen.keyDownUpJavaCode(javascriptKeyCode));
 			break;
 		case KEYUP:
-			javaKeyCode = CaratteriSpeciali.keydownupJavaCode(javascriptKeyCode);
-			getRobot().keyRelease(javaKeyCode);
+			Screen.keyUp(Screen.keyDownUpJavaCode(javascriptKeyCode));
 			break;	
 		default:
 			break;

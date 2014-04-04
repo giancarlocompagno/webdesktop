@@ -5,18 +5,12 @@
     <artifactId>webdesktop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>webdesktop-core</artifactId>
+  <artifactId>webdesktop-udpclient</artifactId>
   <dependencies>
-
-  <dependency>
-  	<groupId>it.bradipo.webdesktop</groupId>
-  	<artifactId>webdesktop-common</artifactId>
-  	<version>0.0.1-SNAPSHOT</version>
-  </dependency>
-  <dependency>
-  	<groupId>it.bradipo.webdesktop</groupId>
-  	<artifactId>webdesktop-udpserver</artifactId>
-  	<version>0.0.1-SNAPSHOT</version>
-  </dependency>
+  	<dependency>
+  		<groupId>it.bradipo.webdesktop</groupId>
+  		<artifactId>webdesktop-common</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>

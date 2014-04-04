@@ -1,18 +1,15 @@
 package it.bradipo.webdesktop.home.command;
 
 
-import java.awt.Robot;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
+import it.bradipo.webdesktop.Screen;
 
-public class ClickCommand extends AbstractCommand {
+public class ClickCommand implements ICommand {
 	
 	public enum CLICKTYPE{MOUSEUP,MOUSEDOWN,RIGHTCLICK};
 	
 	private CLICKTYPE type;
 
-	public ClickCommand(Robot robot,CLICKTYPE type) {
-		super(robot);
+	public ClickCommand(CLICKTYPE type) {
 		this.type=type;
 	}
 	
@@ -21,17 +18,16 @@ public class ClickCommand extends AbstractCommand {
 		int comma = value.indexOf(',');
         int x = value(value.substring(0, comma));
         int y = value(value.substring(comma + 1));
-        getRobot().mouseMove(x, y);
+        Screen.mouseMove(x, y);
         switch (type) {
 		case MOUSEDOWN:
-			getRobot().mousePress(InputEvent.BUTTON1_MASK);
+			Screen.mouseDown();
 			break;
 		case MOUSEUP:
-			getRobot().mouseRelease(InputEvent.BUTTON1_MASK);
+			Screen.mouseUp();
 			break;
         case RIGHTCLICK:
-        	getRobot().keyPress(KeyEvent.VK_CONTEXT_MENU);
-			getRobot().keyRelease(KeyEvent.VK_CONTEXT_MENU);
+        	Screen.rightClick();
 			break;
         }
         

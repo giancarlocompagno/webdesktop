@@ -23,5 +23,4 @@ public interface IHttpResponse {
 	
 	void send(int responseCode,long length,InputStream is,Map<String,String> header,String... contentType) throws IOException;
 	
-
 }

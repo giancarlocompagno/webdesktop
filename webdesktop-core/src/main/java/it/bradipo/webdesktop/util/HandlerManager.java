@@ -3,6 +3,7 @@ package it.bradipo.webdesktop.util;
 import it.bradipo.webdesktop.handler.HttpHandler;
 import it.bradipo.webdesktop.handler.ResourceHandler;
 import it.bradipo.webdesktop.home.handler.CommandHandler;
+import it.bradipo.webdesktop.home.handler.DatagramMJPEGHandler;
 import it.bradipo.webdesktop.home.handler.HomePageHandler;
 import it.bradipo.webdesktop.home.handler.StreamMJPEGHandler;
 import it.bradipo.webdesktop.shell.handler.ShellEditHandler;
@@ -12,6 +13,7 @@ import it.bradipo.webdesktop.tree.handler.TreeHandler;
 import it.bradipo.webdesktop.tree.handler.TreePageHandler;
 import it.bradipo.webdesktop.tree.handler.UploadHandler;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -25,7 +27,7 @@ public class HandlerManager {
 
 	static{
 		map.put("/resources", new ResourceHandler());
-		map.put("/screen", new StreamMJPEGHandler());
+		//map.put("/screen", new StreamMJPEGHandler());
 		map.put("/taskmanager.html", new TaskManagerPageHandler());
 		map.put("/tree.html", new TreePageHandler());
 		map.put("/shell.html", new ShellPageHandler());
@@ -34,6 +36,8 @@ public class HandlerManager {
 		map.put("/tree", new TreeHandler());
 		map.put("/upload", new UploadHandler());
 	}
+	
+	
 	
 	private HandlerManager() {
 		
@@ -48,6 +52,12 @@ public class HandlerManager {
 		return new HomePageHandler();
 	}
 	
+	public static HttpHandler getDatagram() throws IOException{
+		return new DatagramMJPEGHandler();
+	}
 	
+	public static HttpHandler getStream(){
+		return new StreamMJPEGHandler();
+	}
 
 }
